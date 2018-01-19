@@ -99,47 +99,28 @@
     <ul class="nav sidebar-menu">
         <!--Dashboard-->
         <li>
-            <a href="/yctsp/index.php/Admin/category/index" target="_blank">
-                <i class="menu-icon fa fa-film"></i>
-                <span class="menu-text">分类管理</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-        <li>
-            <a href="/yctsp/index.php/Admin/article/index">
-                <i class="menu-icon fa fa-gear"></i>
-                <span class="menu-text">文章管理</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-        <li>
-            <a href="/yctsp/index.php/Admin/link/index">
-                <i class="menu-icon fa fa-gear"></i>
-                <span class="menu-text">链接管理</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-        <li>
-            <a href="/yctsp/index.php/Admin/Conf/index">
-                <i class="menu-icon fa fa-gear"></i>
-                <span class="menu-text">配置管理</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-        <li>
-            <a href="/yctsp/index.php/Admin/Conf/conflst">
-                <i class="menu-icon fa fa-gear"></i>
-                <span class="menu-text">网站配置列表</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-        <li>
             <a href="/yctsp/index.php/Admin/Admin/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">管理员管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+        <li>
+            <a href="/yctsp/index.php/Admin/User/index">
                 <i class="menu-icon fa fa-gear"></i>
                 <span class="menu-text">用户管理</span>
                 <i class="menu-expand"></i>
             </a>
         </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Category/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">分类管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
         <!--<li>-->
             <!--<a href="#" class="menu-dropdown">-->
                 <!--<i class="menu-icon fa fa-gear"></i>-->

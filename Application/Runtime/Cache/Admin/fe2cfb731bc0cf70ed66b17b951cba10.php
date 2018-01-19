@@ -113,6 +113,14 @@
             </a>
         </li>
 
+        <li>
+            <a href="/yctsp/index.php/Admin/Category/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">分类管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
         <!--<li>-->
             <!--<a href="#" class="menu-dropdown">-->
                 <!--<i class="menu-icon fa fa-gear"></i>-->
@@ -174,14 +182,73 @@
             <!-- Page Content -->
             <div class="page-content">
                 <!-- Page Breadcrumb -->
-
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li><a href="#">系统</a></li>
+                        <li class="active">管理员管理</li>
+                    </ul>
+                </div>
                 <!-- /Page Breadcrumb -->
 
                 <!-- Page Body -->
                 <div class="page-body">
+                    
+<button type="button" tooltip="添加管理员" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '/yctsp/index.php/Admin/Category/add'"> <i class="fa fa-plus"></i> 添加分类</button>
+<button type="button" tooltip="批量删除" class="btn btn-sm btn-azure btn-addon" onClick="javascript:document.getElementById('myForm').submit()"> <i class="fa fa-plus"></i> 批量删除</button>
 
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="2%"></th>
+                                <th class="text-center">分类ID</th>
+                                <th class="text-center">分类名称</th>
+                                <th class="text-center">分类信息</th>
+                                <th class="text-center">父类</th>
+                                <th class="text-center">分类路径</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-                            系统首页
+                        <form action="/yctsp/index.php/Admin/Category/Adelete" method="post" id="myForm" >
+
+                        <?php if(is_array($cates)): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                                <td align="center">
+                                    <input type="checkbox" name="id[]" value="<?php echo ($vo["ad_id"]); ?>">
+                                </td>
+                                <td align="center"><?php echo ($vo["id"]); ?></td>
+                                <td align="center"><?php echo ($vo["cname"]); ?></td>
+                                <td align="center"><?php echo ($vo["info"]); ?></td>
+                                <td align="center"><?php echo ($vo["pid"]); ?></td>
+                                <td align="center"><?php echo ($vo["path"]); ?></td>
+                                <td align="center">
+                                    <a href="/yctsp/index.php/Admin/Category/edit/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '/yctsp/index.php/Admin/Category/delete/id/<?php echo ($vo["id"]); ?>')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+
+                        </form>
+
+                        </tbody>
+
+                    </table>
+                    <?php echo ($page); ?>
+                </div>
+                <div>
+                	                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                 </div>
                 <!-- /Page Body -->
