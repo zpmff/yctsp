@@ -12,7 +12,7 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="#">系统</a></li>
-                        <li class="active">用户管理</li>
+                        <li class="active">管理员管理</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -20,7 +20,7 @@
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="添加文章" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '__CONTROLLER__/add'"> <i class="fa fa-plus"></i> 添加用户</button>
+<button type="button" tooltip="添加管理员" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '__CONTROLLER__/add'"> <i class="fa fa-plus"></i> 添加管理员</button>
 <button type="button" tooltip="批量删除" class="btn btn-sm btn-azure btn-addon" onClick="javascript:document.getElementById('myForm').submit()"> <i class="fa fa-plus"></i> 批量删除</button>
 
 <div class="row">
@@ -32,8 +32,10 @@
                         <thead class="">
                             <tr>
                                 <th class="text-center" width="2%"></th>
-                                <th class="text-center">用户ID</th>
-                                <th class="text-center">用户名</th>
+                                <th class="text-center">管理员ID</th>
+                                <th class="text-center">管理员名称</th>
+                                <th class="text-center">添加时间</th>
+                                <th class="text-center">状态</th>
                                 <th class="text-center">操作</th>
                             </tr>
                         </thead>
@@ -41,19 +43,24 @@
 
                         <form action="__CONTROLLER__/Adelete" method="post" id="myForm" >
 
-                        <volist name="list" id="vo">
+                        <volist name="admines" id="vo">
                            <tr>
                                 <td align="center">
                                     <input type="checkbox" name="id[]" value="{$vo.ad_id}">
                                 </td>
-                                <td align="center">{$vo.ad_id}</td>
-                                <td align="center">{$vo.ad_name}</td>
-
+                                <td align="center">{$vo.id}</td>
+                                <td align="center">{$vo.username}</td>
+                                <td align="center">{$vo.time|date="Y-m-d",###}</td>
                                 <td align="center">
-                                    <a href="__CONTROLLER__/edit/ad_id/{$vo.ad_id}" class="btn btn-primary btn-sm shiny">
+                                    <if condition="$vo['status'] eq 0 "> 正常
+                                    <else /> 禁用
+                                    </if>
+                                </td>
+                                <td align="center">
+                                    <a href="__CONTROLLER__/edit/id/{$vo.id}" class="btn btn-primary btn-sm shiny">
                                         <i class="fa fa-edit"></i> 编辑
                                     </a>
-                                    <a href="#" onClick="warning('确实要删除吗', '__CONTROLLER__/delete/ad_id/{$vo.ad_id}')" class="btn btn-danger btn-sm shiny">
+                                    <a href="#" onClick="warning('确实要删除吗', '__CONTROLLER__/delete/id/{$vo.id}')" class="btn btn-danger btn-sm shiny">
                                         <i class="fa fa-trash-o"></i> 删除
                                     </a>
                                 </td>
