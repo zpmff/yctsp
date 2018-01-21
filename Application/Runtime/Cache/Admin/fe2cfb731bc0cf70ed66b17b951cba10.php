@@ -121,6 +121,30 @@
             </a>
         </li>
 
+        <li>
+            <a href="/yctsp/index.php/Admin/Slider/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">轮播图管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Config/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">配置管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Goods/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">商品管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
         <!--<li>-->
             <!--<a href="#" class="menu-dropdown">-->
                 <!--<i class="menu-icon fa fa-gear"></i>-->

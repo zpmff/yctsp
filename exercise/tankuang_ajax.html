@@ -1,0 +1,85 @@
+<!DOCTYPE html >
+
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+    <style>
+        *{padding: 0; margin: 0}
+        .box{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.1);
+            display: none;
+        }
+        .box1{
+            width: 500px;
+            height: 500px;
+            position: fixed;left: 50%; top: 25%;
+            margin-left: -250px;
+            border: 1px solid #000000;
+            background:yellow;
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            position: fixed;left: 20%; top: 25%;
+            margin-left: -250px;
+            border: 1px solid #000000;
+            background:red;
+        }
+    </style>
+    <script>
+
+    </script>
+</head>
+<body>
+<div class="box">
+    <div class="box1">
+        <span>name :</span>   <span id="name"> </span>      <br>
+        <span>age :</span>   <span id="age"> </span>        <br>
+        <span>height :</span>   <span id="height"> </span>        <br>
+        <a href="javascript:;" onclick="jQuery('.box').hide()" class="close">close111</a>
+        <a href="javascript:;" onclick="showbox2()" class="show">open222</a>
+    </div>
+
+</div>
+
+<a href="javascript:;" onclick="showbox1()" class="show">点击后从后台拿ajax数据</a>
+
+</body>
+<script>
+
+    function showbox1(){
+
+        $.post("tankuang_ajax_recieve.php", { name: "John", time: "2pm" },
+                function(data){
+//                    alert("Data Loaded: " + data);
+                    var jsonObj = JSON.parse( data );
+//                    alert(jsonObj.name);
+                    $('#name').html(jsonObj.name);
+                    $('#age').html(jsonObj.age);
+                    $('#height').html(jsonObj.height);
+//                    $('#height').val(jsonObj.height);  注意 .val 改变的是val的值，如<input type="input" value=""> 改变的是value值
+                });
+
+        $(".box").show();
+
+//        $(".box2").hide();
+    }
+
+
+    function showbox2(){
+        $(".box2").show();
+    }
+
+    function close2(){
+        $(".box2").hide();
+    }
+
+
+</script>
+
+</html>

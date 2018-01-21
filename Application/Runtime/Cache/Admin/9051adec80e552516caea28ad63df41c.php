@@ -121,6 +121,30 @@
             </a>
         </li>
 
+        <li>
+            <a href="/yctsp/index.php/Admin/Slider/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">轮播图管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Config/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">配置管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Goods/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">商品管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
         <!--<li>-->
             <!--<a href="#" class="menu-dropdown">-->
                 <!--<i class="menu-icon fa fa-gear"></i>-->
@@ -185,7 +209,7 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="#">系统</a></li>
-                        <li class="active">用户管理</li>
+                        <li class="active">管理员管理</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -193,7 +217,7 @@
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '/yctsp/index.php/Admin/User/add'"> <i class="fa fa-plus"></i> 添加用户</button>
+<button type="button" tooltip="添加轮播图" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '/yctsp/index.php/Admin/Slider/add'"> <i class="fa fa-plus"></i> 添加轮播图</button>
 <button type="button" tooltip="批量删除" class="btn btn-sm btn-azure btn-addon" onClick="javascript:document.getElementById('myForm').submit()"> <i class="fa fa-plus"></i> 批量删除</button>
 
 <div class="row">
@@ -205,39 +229,33 @@
                         <thead class="">
                             <tr>
                                 <th class="text-center" width="2%"></th>
-                                <th class="text-center">用户ID</th>
-                                <th class="text-center">用户名</th>
-                                <th class="text-center">注册时间</th>
+                                <th class="text-center">轮播图ID</th>
+                                <th class="text-center">轮播图名称</th>
+                                <th class="text-center">图片</th>
+                                <th class="text-center">url</th>
+                                <th class="text-center">排列序号</th>
                                 <th class="text-center">操作</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                        <form action="/yctsp/index.php/Admin/User/Adelete" method="post" id="myForm" >
+                        <form action="/yctsp/index.php/Admin/Slider/Adelete" method="post" id="myForm" >
 
-                        <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                        <?php if(is_array($sliders)): $i = 0; $__LIST__ = $sliders;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
                                 <td align="center">
-                                    <input type="checkbox" name="id[]" value="<?php echo ($vo["ad_id"]); ?>">
+                                    <input type="checkbox" name="id[]" value="<?php echo ($vo["id"]); ?>">
                                 </td>
                                 <td align="center"><?php echo ($vo["id"]); ?></td>
                                 <td align="center"><?php echo ($vo["name"]); ?></td>
-                                <td align="center"><?php echo (date("Y-m-d",$vo["time"])); ?></td>
-
+                                <td align="center"><?php echo ($vo["img"]); ?></td>
+                                <td align="center"><?php echo ($vo["url"]); ?></td>
+                                <td align="center"><?php echo ($vo["sort"]); ?></td>
                                 <td align="center">
-                                    <a href="/yctsp/index.php/Admin/User/edit/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-sm shiny">
+                                    <a href="/yctsp/index.php/Admin/Slider/edit/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-sm shiny">
                                         <i class="fa fa-edit"></i> 编辑
                                     </a>
-
-                                    <a href="#" onClick="warning('确实要删除吗', '/yctsp/index.php/Admin/User/delete/id/<?php echo ($vo["id"]); ?>')" class="btn btn-danger btn-sm shiny">
+                                    <a href="#" onClick="warning('确实要删除吗', '/yctsp/index.php/Admin/Slider/delete/id/<?php echo ($vo["id"]); ?>')" class="btn btn-danger btn-sm shiny">
                                         <i class="fa fa-trash-o"></i> 删除
-                                    </a>
-
-                                    <a href="javascript:;" onclick="users(<?php echo ($vo["id"]); ?>)" class="btn btn-primary btn-sm shiny" data-toggle="modal" data-target="#myModal1" >
-                                        <i class="fa fa-edit"></i> 查看用户详情
-                                    </a>
-
-                                    <a href="" class="btn btn-primary btn-sm shiny" data-toggle="modal" data-target="#myModal2">
-                                        <i class="fa fa-edit"></i> 编辑用户详情
                                     </a>
                                 </td>
                             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
@@ -264,127 +282,6 @@
 	</div>
 
 
-
-    <!--模态框，用来弹框的，查看用户详情-->
-    <!-- Modal -->
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="Label">查看用户详情</h4>
-                </div>
-                <div class="modal-body">
-
-
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
-                        </div>
-                    </form>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--模态框，用来弹框的，编辑用户详情-->
-    <!-- Modal -->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">编辑用户详情</h4>
-                </div>
-                <div class="modal-body">
-
-
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-2 control-label">性别</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="sex"  name="sex" value="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-2 control-label">生日</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="birthday"  name="birthday" value="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-2 control-label">真实姓名</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="zsname"  name="zsname" value="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-2 control-label">省份</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="sheng"  name="sheng" value="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-2 control-label">城市</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="shi"  name="shi" value="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex" class="col-sm-2 control-label">区域</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="qu"  name="qu" value="">
-                            </div>
-                        </div>
-
-                    </form>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">保存</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-   <script>
-
-       function users(id){
-           $.post("/yctsp/index.php/Admin/User/ajax_userInfo", { id: id },
-                   function(data){
-                       alert(data);
-                   });
-       }
-   </script>
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/bootstrap.js"></script>

@@ -1,0 +1,27 @@
+<script type="text/javascript" src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+
+
+<script type="text/javascript" >
+    $(document).ready(function() {
+
+        $('#photoimg').on('change', function()            {
+            $("#preview").html('');
+            $("#preview").html('<img src="loader.gif" alt="Uploading...."/>');
+            $("#imageform").ajaxForm({
+                target: '#preview'
+            }).submit();
+
+        });
+    });
+</script>
+<div style="width:600px">
+
+    <form id="imageform" method="post" enctype="multipart/form-data" action='pic_recieve.php'>
+        上传 <input type="file" name="photoimg" id="photoimg" />
+    </form>
+    <div id='preview'>
+    </div>
+
+
+</div>
+
