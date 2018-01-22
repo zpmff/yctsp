@@ -121,6 +121,30 @@
             </a>
         </li>
 
+        <li>
+            <a href="/yctsp/index.php/Admin/Slider/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">轮播图管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Config/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">配置管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Goods/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">商品管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
         <!--<li>-->
             <!--<a href="#" class="menu-dropdown">-->
                 <!--<i class="menu-icon fa fa-gear"></i>-->
@@ -232,7 +256,7 @@
                                         <i class="fa fa-trash-o"></i> 删除
                                     </a>
 
-                                    <a href="javascript:;" onclick="users(<?php echo ($vo["id"]); ?>)" class="btn btn-primary btn-sm shiny" data-toggle="modal" data-target="#myModal1" >
+                                    <a href="javascript:;" onclick="users(<?php echo ($vo["id"]); ?>)" class="btn btn-primary btn-sm shiny"  >
                                         <i class="fa fa-edit"></i> 查看用户详情
                                     </a>
 
@@ -274,40 +298,40 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title" id="Label">查看用户详情</h4>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" id="select_user_info">
 
 
                     <form class="form-horizontal">
                         <div class="form-group">
                             <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
+                            <label for="sex" class="col-sm-2  control-label" id="sex_zhanshi"></label>
                         </div>
                         <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
+                            <label for="sex" class="col-sm-4 control-label">生日</label>
+                            <label for="sex" class="col-sm-2  control-label" id="birthday_zhanshi"></label>
                         </div>
                         <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
+                            <label for="sex" class="col-sm-4 control-label">真实姓名</label>
+                            <label for="sex" class="col-sm-2  control-label" id="realname_zhanshi"></label>
                         </div>
                         <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
+                            <label for="sex" class="col-sm-4 control-label">省</label>
+                            <label for="sex" class="col-sm-2  control-label" id="sheng_zhanshi"></label>
                         </div>
                         <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
+                            <label for="sex" class="col-sm-4 control-label">市</label>
+                            <label for="sex" class="col-sm-2  control-label" id="shi_zhanshi"></label>
                         </div>
                         <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label">性别</label>
+                            <label for="sex" class="col-sm-4 control-label">区</label>
+                            <label for="sex" class="col-sm-2  control-label" id="qu_zhanshi"></label>
                         </div>
                     </form>
 
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" onclick="close_myModal1(this)">Close</button>
                 </div>
             </div>
         </div>
@@ -381,9 +405,40 @@
        function users(id){
            $.post("/yctsp/index.php/Admin/User/ajax_userInfo", { id: id },
                    function(data){
-                       alert(data);
+
+                        //alert(typeof(data));//需要看后台返回的是json字符串 还是对象，如果是字符串的话需要parse解析一下，如exercise的例子；如果直接是对象的话不用解析，直接打印就行，thinkphp就是直接是对象
+                        //alert(data.pic);
+                       //alert( data);
+//                       alert( data == '0');
+
+                       if(data == '0' ){
+//                           $('#select_user_info').empty();
+//                           $('#select_user_info').html('用户未录入详细信息');
+                       } else {
+                           $('#sex_zhanshi').html(data.sex);
+                           $('#birthday_zhanshi').html(data.birthday);
+                           $('#realname_zhanshi').html(data.zsname);
+                           $('#sheng_zhanshi').html(data.sheng);
+                           $('#shi_zhanshi').html(data.shi);
+                           $('#qu_zhanshi').html(data.qu);
+
+                           $('#myModal1').modal('show');
+                       }
                    });
        }
+
+
+       function close_myModal1(){
+           $('#myModal1').modal('hide');
+       }
+
+
+
+
+
+
+
+
    </script>
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>

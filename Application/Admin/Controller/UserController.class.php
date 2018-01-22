@@ -126,10 +126,8 @@ class UserController extends Controller {
 //        pri($userInfoesa);
 
         if($userInfoesa){
-            $this->ajaxReturn($userInfoesa);
-//            echo $userInfoesa;
-//            return $userInfoesa;
-//            echo $this->fetch();
+            $this->ajaxReturn($userInfoesa,'JSON');
+
         }else{
             echo "0";
         }
