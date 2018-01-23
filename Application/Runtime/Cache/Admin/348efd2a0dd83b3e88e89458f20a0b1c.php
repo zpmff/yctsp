@@ -260,7 +260,7 @@
                                         <i class="fa fa-edit"></i> 查看用户详情
                                     </a>
 
-                                    <a href="" class="btn btn-primary btn-sm shiny" data-toggle="modal" data-target="#myModal2">
+                                    <a href="javascript:;" class="btn btn-primary btn-sm shiny" onclick="select_users(<?php echo ($vo["id"]); ?>)" >
                                         <i class="fa fa-edit"></i> 编辑用户详情
                                     </a>
                                 </td>
@@ -291,20 +291,19 @@
 
     <!--模态框，用来弹框的，查看用户详情-->
     <!-- Modal -->
-    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="select_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="Label">查看用户详情</h4>
+                    <h4 class="modal-title" id="Lal">查看用户详情</h4>
                 </div>
                 <div class="modal-body" id="select_user_info">
 
-
                     <form class="form-horizontal">
                         <div class="form-group">
-                            <label for="sex" class="col-sm-4 control-label">性别</label>
-                            <label for="sex" class="col-sm-2  control-label" id="sex_zhanshi"></label>
+                            <label for="sex_zhanshi" class="col-sm-4 control-label">性别</label>
+                            <label for="sex_zhanshi" class="col-sm-2  control-label" id="sex_zhanshi"></label>
                         </div>
                         <div class="form-group">
                             <label for="sex" class="col-sm-4 control-label">生日</label>
@@ -312,7 +311,7 @@
                         </div>
                         <div class="form-group">
                             <label for="sex" class="col-sm-4 control-label">真实姓名</label>
-                            <label for="sex" class="col-sm-2  control-label" id="realname_zhanshi"></label>
+                            <label for="sex" class="col-sm-2  control-label" id="zsname_zhanshi"></label>
                         </div>
                         <div class="form-group">
                             <label for="sex" class="col-sm-4 control-label">省</label>
@@ -331,15 +330,39 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" onclick="close_myModal1(this)">Close</button>
+                    <button type="button" class="btn btn-default" onclick="close_select_model()">Close</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!--模态框，用来弹框的，显示暂无用户信息-->
+    <!-- Modal -->
+
+    <div class="modal fade" id="no_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="Label">查看用户详情</h4>
+                </div>
+                <div class="modal-body" id="selo">
+                    暂无该用户详情
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="close_Modal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
     <!--模态框，用来弹框的，编辑用户详情-->
     <!-- Modal -->
-    <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="edit_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -348,8 +371,7 @@
                 </div>
                 <div class="modal-body">
 
-
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="/yctsp/index.php/Admin/User/ajax_edit_userInfo" id="edit_from">
                         <div class="form-group">
                             <label for="sex" class="col-sm-2 control-label">性别</label>
                             <div class="col-sm-10">
@@ -387,21 +409,45 @@
                             </div>
                         </div>
 
-                    </form>
+                        <input type="hidden" name="id" id="id" value="">
 
+                    </form>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary">保存</button>
+                    <button type="button" class="btn btn-primary" onclick="edit_form_subm()">保存</button>
                 </div>
             </div>
         </div>
     </div>
 
 
+    <!--模态框，用来提交修改信息后，如果成功，则提示成功；如果失败，则提交失败-->
+    <!-- Modal -->
+
+    <div class="modal fade" id="edit_result" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="L">修改结果</h4>
+                </div>
+                <div class="modal-body" id="result">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="close_Modal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
    <script>
 
+       //查看用户信息
        function users(id){
            $.post("/yctsp/index.php/Admin/User/ajax_userInfo", { id: id },
                    function(data){
@@ -412,30 +458,83 @@
 //                       alert( data == '0');
 
                        if(data == '0' ){
-//                           $('#select_user_info').empty();
-//                           $('#select_user_info').html('用户未录入详细信息');
+                           $('#no_model').modal('show');
+
                        } else {
                            $('#sex_zhanshi').html(data.sex);
                            $('#birthday_zhanshi').html(data.birthday);
-                           $('#realname_zhanshi').html(data.zsname);
+                           $('#zsname_zhanshi').html(data.zsname);
                            $('#sheng_zhanshi').html(data.sheng);
                            $('#shi_zhanshi').html(data.shi);
                            $('#qu_zhanshi').html(data.qu);
 
-                           $('#myModal1').modal('show');
+                           $('#select_model').modal('show');
                        }
                    });
        }
 
 
-       function close_myModal1(){
-           $('#myModal1').modal('hide');
+       function close_select_model(){
+           $('#select_model').modal('hide');
+       }
+
+       function close_Modal(){
+           $('#no_model').modal('hide');
+       }
+
+       function close_Modal(){
+           $('#no_model').modal('hide');
        }
 
 
+       //编辑用户信息时，需要先载入用户详细信息，如果没有的话，返回暂无此用户信息
+       function select_users(id){
+           $.post("/yctsp/index.php/Admin/User/ajax_userInfo", { id: id },
+                   function(data){
 
+                       //alert(typeof(data));//需要看后台返回的是json字符串 还是对象，如果是字符串的话需要parse解析一下，如exercise的例子；如果直接是对象的话不用解析，直接打印就行，thinkphp就是直接是对象
+                       //alert(data.pic);
+                       //alert( data);
+                       if(data == '0' ){
 
+                           $('#no_model').modal('show');
 
+                       } else {
+                           $('#sex').val(data.sex);
+                           $('#birthday').val(data.birthday);
+                           $('#zsname').val(data.zsname);
+                           $('#sheng').val(data.sheng);
+                           $('#shi').val(data.shi);
+                           $('#qu').val(data.qu);
+                           $('#id').val(data.id);
+
+                           $('#edit_model').modal('show');
+                       }
+                   });
+       }
+
+       //修改用户信息后，提交到后台
+       function  ajax_tijiao(){
+           $.post("/yctsp/index.php/Admin/User/ajax_edit_userInfo",
+                   function(data){
+
+                       //alert(typeof(data));//需要看后台返回的是json字符串 还是对象，如果是字符串的话需要parse解析一下，如exercise的例子；如果直接是对象的话不用解析，直接打印就行，thinkphp就是直接是对象
+                       //alert(data.pic);
+                       //alert( data);
+                       if(data.code == '1001' ){
+                           $('#result').html( data.message );
+                       } else {
+                           $('#result').html(data.message);
+                       }
+                       $('#edit_result').modal('show');
+                   });
+
+       }
+
+       //修改个人信息后的提交请求，因为按键是button 不能submit
+       function edit_form_subm(){
+            $('#edit_from').submit();
+       }
 
 
 

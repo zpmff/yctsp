@@ -16,7 +16,7 @@ define('SITE_URL',"http://127.0.0.1/yctsp");
 
 function pri($arr){
     var_dump($arr);
-    exit();
+    die();
 }
 
 
