@@ -300,7 +300,6 @@
                 </div>
                 <div class="modal-body" id="select_user_info">
 
-
                     <form class="form-horizontal">
                         <div class="form-group">
                             <label for="sex" class="col-sm-4 control-label">性别</label>
@@ -327,7 +326,6 @@
                             <label for="sex" class="col-sm-2  control-label" id="qu_zhanshi"></label>
                         </div>
                     </form>
-
 
                 </div>
                 <div class="modal-footer">
@@ -413,7 +411,7 @@
 
                        if(data == '0' ){
 //                           $('#select_user_info').empty();
-//                           $('#select_user_info').html('用户未录入详细信息');
+                           $('#select_user_info').text('用户未录入详细信息');
                        } else {
                            $('#sex_zhanshi').html(data.sex);
                            $('#birthday_zhanshi').html(data.birthday);
