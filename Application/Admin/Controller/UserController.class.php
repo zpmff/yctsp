@@ -115,7 +115,7 @@ class UserController extends Controller {
         }
     }
 
-
+    //查看用户详细信息，通过ajax传递
     public function ajax_userInfo(){
         $id  = I('id') + 0 ;
 
@@ -132,4 +132,70 @@ class UserController extends Controller {
             echo "0";
         }
     }
+
+
+    //编辑用户详细信息，通过ajax传递
+    public function ajax_edit_userInfo(){
+
+//        pri($_POST);
+
+        $data['sex'] = I('sex') + 0;
+        $data['birthday'] = trim(I('birthday'));
+        $data['zsname'] = trim(I('zsname'));
+        $data['sheng'] = trim(I('sheng'));
+        $data['shi'] = trim(I('shi'));
+        $data['qu'] = trim(I('qu'));
+        $data['id'] =  I('id') + 0 ;
+
+
+        //2. 创建对象
+        $userInfo = M('user_info');
+
+
+
+        //3.存入库中
+        if($userInfo->create($data)){
+            $res = $userInfo ->save();
+            if( $res !== false ){
+                $arr['message']="用户详情修改成功";
+                $arr['code']= 1001;
+
+                $this->ajaxReturn($arr,'JSON');
+
+            }else{
+                $arr['message']="用户修改失败";
+                $arr['code']= 1002;
+
+                $this->ajaxReturn($arr,'JSON');
+            }
+        }else{
+            $arr['message']="用户修改失败";
+            $arr['code']= 1003;
+
+            $this->ajaxReturn($arr,'JSON');
+        }
+
+
+
+//        $arr['name']=$picname;
+//        $arr['pic']=$pics;
+//        $arr['size']=$size;
+//        $this->ajaxReturn ($arr,'JSON');
+//        alert(d.pic);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
