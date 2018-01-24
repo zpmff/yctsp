@@ -251,6 +251,9 @@
                                 <td align="center"><?php echo ($vo["pid"]); ?></td>
                                 <td align="center"><?php echo ($vo["path"]); ?></td>
                                 <td align="center">
+                                    <a href="/yctsp/index.php/Admin/Category/addZilei/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 添加子类
+                                    </a>
                                     <a href="/yctsp/index.php/Admin/Category/edit/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-sm shiny">
                                         <i class="fa fa-edit"></i> 编辑
                                     </a>
@@ -265,7 +268,6 @@
                         </tbody>
 
                     </table>
-                    <?php echo ($page); ?>
                 </div>
                 <div>
                 	                </div>
