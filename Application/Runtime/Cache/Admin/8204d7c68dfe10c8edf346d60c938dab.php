@@ -82,11 +82,11 @@
 
 <!-- /头部 -->
 
-	<div class="main-container container-fluid">
-		<div class="page-container">
-            <!-- Page Sidebar -->
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
 
-            <!-- Page Sidebar -->
+        <!-- Page Sidebar -->
 <div class="page-sidebar" id="sidebar">
     <!-- Page Sidebar Header-->
     <div class="sidebar-header-wrapper">
@@ -202,87 +202,99 @@
 </div>
 <!-- /Page Sidebar -->
 
-            <!-- /Page Sidebar -->
-            <!-- Page Content -->
-            <div class="page-content">
-                <!-- Page Breadcrumb -->
-                <div class="page-breadcrumbs">
-                    <ul class="breadcrumb">
-                        <li><a href="#">系统</a></li>
-                        <li class="active">管理员管理</li>
-                    </ul>
-                </div>
-                <!-- /Page Breadcrumb -->
-
-                <!-- Page Body -->
-                <div class="page-body">
-                    
-<button type="button" tooltip="添加管理员" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '/yctsp/index.php/Admin/Category/add'"> <i class="fa fa-plus"></i> 添加分类</button>
-<button type="button" tooltip="批量删除" class="btn btn-sm btn-azure btn-addon" onClick="javascript:document.getElementById('myForm').submit()"> <i class="fa fa-plus"></i> 批量删除</button>
-
-<div class="row">
-    <div class="col-lg-12 col-sm-12 col-xs-12">
-        <div class="widget">
-            <div class="widget-body">
-                <div class="flip-scroll">
-                    <table class="table table-bordered table-hover">
-                        <thead class="">
-                            <tr>
-                                <th class="text-center" width="2%"></th>
-                                <th class="text-center">分类ID</th>
-                                <th class="text-center">分类名称</th>
-                                <th class="text-center">分类信息</th>
-                                <th class="text-center">父类</th>
-                                <th class="text-center">分类路径</th>
-                                <th class="text-center">操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        <form action="/yctsp/index.php/Admin/Category/Adelete" method="post" id="myForm" >
-
-                        <?php if(is_array($cates)): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-                                <td align="center">
-                                    <input type="checkbox" name="id[]" value="<?php echo ($vo["ad_id"]); ?>">
-                                </td>
-                                <td align="center"><?php echo ($vo["id"]); ?></td>
-                                <td align="left" width="30%"><?php echo str_repeat("--------",$vo['level']); ?> <?php echo ($vo["cname"]); ?></td>
-                                <td align="center"><?php echo ($vo["info"]); ?></td>
-                                <td align="center"><?php echo ($vo["pid"]); ?></td>
-                                <td align="center"><?php echo ($vo["path"]); ?></td>
-                                <td align="center">
-                                    <a href="/yctsp/index.php/Admin/Category/addZilei/pid/<?php echo ($vo["id"]); ?>/path/<?php echo ($vo["path"]); ?>" class="btn btn-primary btn-sm shiny">
-                                        <i class="fa fa-edit"></i> 添加子类
-                                    </a>
-                                    <a href="/yctsp/index.php/Admin/Category/edit/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-sm shiny">
-                                        <i class="fa fa-edit"></i> 编辑
-                                    </a>
-                                    <a href="#" onClick="warning('确实要删除吗', '/yctsp/index.php/Admin/Category/delete/id/<?php echo ($vo["id"]); ?>')" class="btn btn-danger btn-sm shiny">
-                                        <i class="fa fa-trash-o"></i> 删除
-                                    </a>
-                                </td>
-                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-
-                        </form>
-
-                        </tbody>
-
-                    </table>
-                </div>
-                <div>
-                	                </div>
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">系统</a>
+                    </li>
+                    <li>
+                        <a href="#">轮播图管理</a>
+                    </li>
+                    <li class="active">修改轮播图</li>
+                </ul>
             </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-blue">
+                                <span class="widget-caption">修改轮播图</span>
+                            </div>
+                            <div class="widget-body">
+                                <div id="horizontal-form">
+
+                                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+
+                                        <div class="form-group">
+                                            <label for="name" class="col-sm-2 control-label no-padding-right">轮播图名称</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="name" placeholder="" name="name" required="" type="text" value="<?php echo ($slideresa["name"]); ?>">
+                                            </div>
+                                            <p class="help-block col-sm-4 red">* 必填</p>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="password" class="col-sm-2 control-label no-padding-right">url</label>
+                                            <div class="col-sm-6 ">
+                                                <input class="form-control" id="password" placeholder="" name="url"  type="text" value="<?php echo ($slideresa["url"]); ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="sort" class="col-sm-2 control-label no-padding-right">排列序号</label>
+                                            <div class="col-sm-6 ">
+                                                <input class="form-control" id="sort" placeholder="" name="sort"  type="text" value="<?php echo ($slideresa["sort"]); ?>">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="img" class="col-sm-2 control-label no-padding-right">图片</label>
+                                            <div class="col-sm-2 ">
+                                            <p  class="help-block col-sm-2 ">
+                                                <?php if($slideresa['img'] != '' ): ?><img src="/yctsp/<?php echo ($slideresa["img"]); ?>"  alt="">
+                                                    <?php else: ?>暂无图片<?php endif; ?>
+                                            </p>
+                                                <label for="img" class="col-sm-2 control-label "></label>
+                                                <input type="file" id="img" name="img" >
+
+                                        </div>
+
+
+                                        <input type="hidden" name="id" value="<?php echo ($slideresa["id"]); ?>">
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-10">
+                                                <button type="submit" class="btn btn-default">保存信息</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
         </div>
+        <!-- /Page Content -->
     </div>
 </div>
 
-                </div>
-                <!-- /Page Body -->
-            </div>
-            <!-- /Page Content -->
-		</div>	
-	</div>
-
+<script src="__UEDITOR__/ueditor.config.js"></script>
+<script src="__UEDITOR__/ueditor.all.min.js"></script>
+<script src="__UEDITOR__/lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    UE.getEditor('content',{initialFrameWidth:800,initialFrameHeight:400,});
+</script>
 
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>

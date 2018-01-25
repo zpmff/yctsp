@@ -50,12 +50,12 @@
                                     <input type="checkbox" name="id[]" value="{$vo.ad_id}">
                                 </td>
                                 <td align="center">{$vo.id}</td>
-                                <td align="center">{$vo.cname}</td>
+                                <td align="left" width="30%"><?php echo str_repeat("--------",$vo['level']); ?> {$vo.cname}</td>
                                 <td align="center">{$vo.info}</td>
                                 <td align="center">{$vo.pid}</td>
                                 <td align="center">{$vo.path}</td>
                                 <td align="center">
-                                    <a href="__CONTROLLER__/addZilei/id/{$vo.id}" class="btn btn-primary btn-sm shiny">
+                                    <a href="__CONTROLLER__/addZilei/pid/{$vo.id}/path/{$vo.path}" class="btn btn-primary btn-sm shiny">
                                         <i class="fa fa-edit"></i> 添加子类
                                     </a>
                                     <a href="__CONTROLLER__/edit/id/{$vo.id}" class="btn btn-primary btn-sm shiny">
