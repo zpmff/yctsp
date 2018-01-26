@@ -247,8 +247,8 @@
                                 </td>
                                 <td align="center"><?php echo ($vo["id"]); ?></td>
                                 <td align="center"><?php echo ($vo["name"]); ?></td>
-                                <td align="center"><?php echo ($vo["img"]); ?></td>
-                                <td align="center"><?php echo ($vo["url"]); ?></td>
+                                <td align="center"><img src="/yctsp/<?php echo ($vo["img"]); ?>" alt=""></td>
+                                <td align="center"><a href="<?php echo ($vo["url"]); ?>"><?php echo ($vo["url"]); ?></a></td>
                                 <td align="center"><?php echo ($vo["sort"]); ?></td>
                                 <td align="center">
                                     <a href="/yctsp/index.php/Admin/Slider/edit/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-sm shiny">

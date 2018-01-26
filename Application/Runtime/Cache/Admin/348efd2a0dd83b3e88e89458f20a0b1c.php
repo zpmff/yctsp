@@ -436,7 +436,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" onclick="close_Modal()">Close</button>
+                    <button type="button" class="btn btn-default" onclick="close_edit_result_Modal()">Close</button>
                 </div>
             </div>
         </div>
@@ -487,6 +487,12 @@
        }
 
 
+       function close_edit_result_Modal(){
+           $('#edit_model').modal('hide');
+           $('#edit_result').modal('hide');
+       }
+       
+
        //编辑用户信息时，需要先载入用户详细信息，如果没有的话，返回暂无此用户信息
        function select_users(id){
            $.post("/yctsp/index.php/Admin/User/ajax_userInfo", { id: id },
@@ -532,12 +538,44 @@
        }
 
        //修改个人信息后的提交请求，因为按键是button 不能submit
+<<<<<<< HEAD
        function edit_form_subm(){
             $('#edit_from').submit();
+=======
+       function edit_form_subm() {
+
+               $.ajax({
+                   type:"post",
+                   url:"/yctsp/index.php/Admin/User/ajax_edit_userInfo",
+                   data:{
+                       sex: $('#sex').val(),//把表单填写值放这里传到后端
+                       birthday:$('#birthday').val(),
+                       zsname:$('#zsname').val(),
+                       sheng:$('#sheng').val(),
+                       shi:$('#shi').val(),
+                       qu:$('#qu').val(),
+                       id:$('#id').val(),
+                   },
+                   success:function (data) {
+//                       alert(data.code);
+                       if(data.code == 1001){
+                           $('#result').html(data.message);
+                       }else{
+                           $('#result').html(data.message);
+                       }
+                       $('#edit_result').modal('show');
+                   }
+               });
+
+>>>>>>> 5a7c7835cbe860f24c0584ce2d062d7787cd6dd8
        }
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5a7c7835cbe860f24c0584ce2d062d7787cd6dd8
    </script>
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>

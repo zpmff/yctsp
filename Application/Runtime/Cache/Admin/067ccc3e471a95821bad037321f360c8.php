@@ -212,9 +212,9 @@
                         <a href="#">系统</a>
                     </li>
                     <li>
-                        <a href="#">分类管理</a>
+                        <a href="#">轮播图管理</a>
                     </li>
-                    <li class="active">添加分类</li>
+                    <li class="active">添加轮播图</li>
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
@@ -226,7 +226,7 @@
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <div class="widget">
                             <div class="widget-header bordered-bottom bordered-blue">
-                                <span class="widget-caption">新增分类</span>
+                                <span class="widget-caption">新增轮播图</span>
                             </div>
                             <div class="widget-body">
                                 <div id="horizontal-form">
@@ -234,18 +234,35 @@
                                     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 
                                         <div class="form-group">
-                                            <label for="cname" class="col-sm-2 control-label no-padding-right">分类名称</label>
+                                            <label for="name" class="col-sm-2 control-label no-padding-right">轮播图名称</label>
                                             <div class="col-sm-6">
-                                                <input class="form-control" id="cname" placeholder="" name="cname" required="" type="text">
+                                                <input class="form-control" id="name" placeholder="" name="name" required="" type="text">
                                             </div>
                                             <p class="help-block col-sm-4 red">* 必填</p>
                                         </div>
 
+
                                         <div class="form-group">
 
-                                            <label for="info" class="col-sm-2 control-label no-padding-right">密码</label>
+                                            <label for="url" class="col-sm-2 control-label no-padding-right">对外url</label>
                                             <div class="col-sm-6">
-                                                <input class="form-control" id="info" placeholder="" name="info"  type="text">
+                                                <input class="form-control" id="url" placeholder="" name="url"  type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <label for="sort" class="col-sm-2 control-label no-padding-right">排序</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="sort" placeholder="" name="sort"  type="text">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <label for="img" class="col-sm-2 control-label no-padding-right">图片地址</label>
+                                            <div class="col-sm-6">
+                                                <input class="" id="img" placeholder="" name="img"  type="file">
                                             </div>
                                         </div>
 

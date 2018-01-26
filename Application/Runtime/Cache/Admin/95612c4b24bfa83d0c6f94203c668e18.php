@@ -121,6 +121,30 @@
             </a>
         </li>
 
+        <li>
+            <a href="/yctsp/index.php/Admin/Slider/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">轮播图管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Config/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">配置管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Goods/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">商品管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
         <!--<li>-->
             <!--<a href="#" class="menu-dropdown">-->
                 <!--<i class="menu-icon fa fa-gear"></i>-->
@@ -219,12 +243,14 @@
 
                                         <div class="form-group">
 
-                                            <label for="info" class="col-sm-2 control-label no-padding-right">密码</label>
+                                            <label for="info" class="col-sm-2 control-label no-padding-right">分类信息</label>
                                             <div class="col-sm-6">
                                                 <input class="form-control" id="info" placeholder="" name="info"  type="text">
                                             </div>
                                         </div>
 
+                                        <input type="hidden" name="pid" value="0">
+                                        <input type="hidden" name="path" value="0">
 
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">

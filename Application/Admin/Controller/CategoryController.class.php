@@ -19,6 +19,8 @@ class CategoryController extends Controller {
 //            pri($_POST);
             $data['cname']  =  I('cname');
             $data['info']  =  I('info');
+            $data['pid']  =  I('pid') + 0;
+            $data['path']  =  I('path');
 
             $cate  =  D('Common/Category');
 
@@ -77,6 +79,36 @@ class CategoryController extends Controller {
             $this->success('分类删除成功',U('index'),3);
         }else{
             $this->error('分类删除失败');
+        }
+    }
+
+    public function addZilei(){
+
+        if(IS_POST){
+
+//            pri($_POST);
+            $data['cname']  =  I('cname');
+            $data['info']  =  I('info');
+            $data['pid']  =  I('pid') + 0;
+            $data['path']  =  I('path').','.$data['pid'];
+
+            $cate  =  D('Common/Category');
+
+            if( $cate ->create($data)){
+                if($cate->add()){
+                    $this->success('新的分类添加成功',U('index'),3);
+                }else{
+                    $this->error('新的分类添加失败');
+                }
+            }else{
+                $this->error($cate->getError());
+            }
+        }else{
+
+            $data['pid']  =  I('pid') + 0;
+            $data['path']  =  I('path');
+            $this->assign('data',$data);
+            $this->display();
         }
     }
 
