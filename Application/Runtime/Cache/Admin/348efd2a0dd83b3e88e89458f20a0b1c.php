@@ -486,12 +486,11 @@
            $('#no_model').modal('hide');
        }
 
-
        function close_edit_result_Modal(){
            $('#edit_model').modal('hide');
            $('#edit_result').modal('hide');
        }
-       
+
 
        //编辑用户信息时，需要先载入用户详细信息，如果没有的话，返回暂无此用户信息
        function select_users(id){
@@ -538,10 +537,6 @@
        }
 
        //修改个人信息后的提交请求，因为按键是button 不能submit
-<<<<<<< HEAD
-       function edit_form_subm(){
-            $('#edit_from').submit();
-=======
        function edit_form_subm() {
 
                $.ajax({
@@ -567,15 +562,11 @@
                    }
                });
 
->>>>>>> 5a7c7835cbe860f24c0584ce2d062d7787cd6dd8
        }
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 5a7c7835cbe860f24c0584ce2d062d7787cd6dd8
    </script>
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>

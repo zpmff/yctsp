@@ -12,7 +12,7 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="#">系统</a></li>
-                        <li class="active">管理员管理</li>
+                        <li class="active">分类管理</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -37,6 +37,7 @@
                                 <th class="text-center">分类信息</th>
                                 <th class="text-center">父类</th>
                                 <th class="text-center">分类路径</th>
+                                <th class="text-center">添加子类</th>
                                 <th class="text-center">操作</th>
                             </tr>
                         </thead>
@@ -55,9 +56,20 @@
                                 <td align="center">{$vo.pid}</td>
                                 <td align="center">{$vo.path}</td>
                                 <td align="center">
-                                    <a href="__CONTROLLER__/addZilei/pid/{$vo.id}/path/{$vo.path}" class="btn btn-primary btn-sm shiny">
-                                        <i class="fa fa-edit"></i> 添加子类
-                                    </a>
+                                    <?php
+                                    $arr = explode(',',$vo[path]);
+                                    $size = count($arr);
+                                ?>
+
+                                    <if condition="$size lt 3 ">
+                                        <a href="__CONTROLLER__/addZilei/pid/{$vo.id}/path/{$vo.path}" class="btn btn-primary btn-sm shiny">
+                                            <i class="fa fa-edit"></i> 添加子类
+                                        </a>
+                                        <else /> 不能添加子类了
+                                    </if>
+                                </td>
+                                <td align="center">
+
                                     <a href="__CONTROLLER__/edit/id/{$vo.id}" class="btn btn-primary btn-sm shiny">
                                         <i class="fa fa-edit"></i> 编辑
                                     </a>

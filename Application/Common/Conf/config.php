@@ -10,4 +10,10 @@ return array(
     'DB_PREFIX' => '', // 数据库表前缀
     'DB_CHARSET'=> 'utf8', // 字符集
     'DB_DEBUG'  =>  TRUE, // 数据库调试模式 开启后可以记录SQL日志 3.2.3新增
+
+    //网站的一些配置，就是一些固定的值
+    'TITLE'    => 'zpzpzpzpzpz',
+    'KEYWORDS'    => 'mffmffmffmff',
+    'DESCRIPTION'    => 'zpandmffzpandmffzpandmffzpandmffzpandmff',
+    'BANQUAN'    => 'nobanquan',
 );
