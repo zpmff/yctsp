@@ -228,9 +228,9 @@
                         <a href="#">系统</a>
                     </li>
                     <li>
-                        <a href="#">配置管理</a>
+                        <a href="#">管理员管理</a>
                     </li>
-                    <li class="active">配置管理</li>
+                    <li class="active">修改管理员</li>
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
@@ -242,7 +242,7 @@
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <div class="widget">
                             <div class="widget-header bordered-bottom bordered-blue">
-                                <span class="widget-caption">配置管理</span>
+                                <span class="widget-caption">修改管理员</span>
                             </div>
                             <div class="widget-body">
                                 <div id="horizontal-form">
@@ -250,34 +250,48 @@
                                     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 
                                         <div class="form-group">
-                                            <label for="TITLE" class="col-sm-2 control-label no-padding-right">网站标题</label>
+                                            <label for="username" class="col-sm-2 control-label no-padding-right">用户名称</label>
                                             <div class="col-sm-6">
-                                                <input class="form-control" id="TITLE" placeholder="" name="TITLE" required="" type="text" value="<?php echo ($config["TITLE"]); ?>">
+                                                <input class="form-control" id="username" placeholder="" name="username" required="" type="text" value="<?php echo ($adminesa["username"]); ?>">
                                             </div>
                                             <p class="help-block col-sm-4 red">* 必填</p>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="KEYWORDS" class="col-sm-2 control-label no-padding-right">关键字</label>
+                                            <label for="password" class="col-sm-2 control-label no-padding-right">用户密码</label>
                                             <div class="col-sm-6 ">
-                                                <input class="form-control" id="KEYWORDS" placeholder="" name="KEYWORDS"  type="text" value="<?php echo ($config["KEYWORDS"]); ?>">
+                                                <input class="form-control" id="password" placeholder="" name="password"  type="password" value="<?php echo ($adminesa["password"]); ?>">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="DESCRIPTION" class="col-sm-2 control-label no-padding-right">描述</label>
+                                            <label for="repassword" class="col-sm-2 control-label no-padding-right">确认密码</label>
                                             <div class="col-sm-6 ">
-                                                <input class="form-control" id="DESCRIPTION" placeholder="" name="DESCRIPTION"  type="text" value="<?php echo ($config["DESCRIPTION"]); ?>">
+                                                <input class="form-control" id="repassword" placeholder="" name="repassword"  type="password" value="">
                                             </div>
                                         </div>
+
+                                        <!-- radio 和checkbox 前面的按钮不显示，源文件中过滤了不显示，加入这一段就显示了 -->
+                                        <style type="text/css">
+                                            input[type="radio"] {
+                                                left: 25px;
+                                                opacity: 1;
+                                            }
+                                        </style>
 
                                         <div class="form-group">
-                                            <label for="BANQUAN" class="col-sm-2 control-label no-padding-right">版权</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="BANQUAN" placeholder="" name="BANQUAN"  type="text" value="<?php echo ($config["BANQUAN"]); ?>">
+                                            <label  class="col-sm-2 control-label no-padding-right">状态</label>
+                                            <div class="col-sm-6">
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="status" id="inlineRadio1" value="0"  <?php if($adminesa['status'] == 0): ?>checked<?php endif; ?> > 正常
+                                                </label>
+                                                <label class="radio-inline">
+                                                    <input type="radio" name="status" id="inlineRadio2" value="1"  <?php if($adminesa['status'] == 1): ?>checked<?php endif; ?> > 禁用
+                                                </label>
                                             </div>
                                         </div>
 
+                                        <input type="hidden" name="id" value="<?php echo ($adminesa["id"]); ?>">
 
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
@@ -297,6 +311,13 @@
         <!-- /Page Content -->
     </div>
 </div>
+
+<script src="http://127.0.0.1/yctsp/Public/ueditor//ueditor.config.js"></script>
+<script src="http://127.0.0.1/yctsp/Public/ueditor//ueditor.all.min.js"></script>
+<script src="http://127.0.0.1/yctsp/Public/ueditor//lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    UE.getEditor('content',{initialFrameWidth:800,initialFrameHeight:400,});
+</script>
 
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>

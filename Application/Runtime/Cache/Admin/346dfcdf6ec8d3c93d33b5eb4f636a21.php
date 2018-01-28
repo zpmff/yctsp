@@ -228,9 +228,9 @@
                         <a href="#">系统</a>
                     </li>
                     <li>
-                        <a href="#">配置管理</a>
+                        <a href="#">商品管理</a>
                     </li>
-                    <li class="active">配置管理</li>
+                    <li class="active">添加商品</li>
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
@@ -242,7 +242,7 @@
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <div class="widget">
                             <div class="widget-header bordered-bottom bordered-blue">
-                                <span class="widget-caption">配置管理</span>
+                                <span class="widget-caption">新增商品</span>
                             </div>
                             <div class="widget-body">
                                 <div id="horizontal-form">
@@ -250,34 +250,89 @@
                                     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 
                                         <div class="form-group">
-                                            <label for="TITLE" class="col-sm-2 control-label no-padding-right">网站标题</label>
+                                            <label for="name" class="col-sm-2 control-label no-padding-right">商品名称</label>
                                             <div class="col-sm-6">
-                                                <input class="form-control" id="TITLE" placeholder="" name="TITLE" required="" type="text" value="<?php echo ($config["TITLE"]); ?>">
+                                                <input class="form-control" id="name" placeholder="" name="name" required="" type="text">
                                             </div>
                                             <p class="help-block col-sm-4 red">* 必填</p>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="KEYWORDS" class="col-sm-2 control-label no-padding-right">关键字</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="KEYWORDS" placeholder="" name="KEYWORDS"  type="text" value="<?php echo ($config["KEYWORDS"]); ?>">
+                                            <label for="info" class="col-sm-2 control-label no-padding-right">商品描述</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="info" placeholder="" name="info"  type="text">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="DESCRIPTION" class="col-sm-2 control-label no-padding-right">描述</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="DESCRIPTION" placeholder="" name="DESCRIPTION"  type="text" value="<?php echo ($config["DESCRIPTION"]); ?>">
+                                            <label for="price" class="col-sm-2 control-label no-padding-right">商品价格</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="price" placeholder="" name="price"  type="text">
                                             </div>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="BANQUAN" class="col-sm-2 control-label no-padding-right">版权</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="BANQUAN" placeholder="" name="BANQUAN"  type="text" value="<?php echo ($config["BANQUAN"]); ?>">
+                                            <label for="num" class="col-sm-2 control-label no-padding-right">商品数量</label>
+                                            <div class="col-sm-6">
+                                                <input class="form-control" id="num" placeholder="" name="num"  type="text">
                                             </div>
                                         </div>
 
+
+                                        <div class="form-group">
+                                            <label for="cid" class="col-sm-2 control-label no-padding-right">商品分类</label>
+                                            <div class="col-sm-6">
+                                                <select name="cid" id="cid" class="form-control">
+                                                    <option value="0">请选择商品分类</option>
+                                                    <?php if(is_array($cates)): $i = 0; $__LIST__ = $cates;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; $arr = explode( ',' , $vo['path'] ); $size = count($arr); ?>
+                                                        <option value="<?php echo ($vo["id"]); ?>" <?php if($size < 3 ): ?>disabled<?php endif; ?>   ><?php echo str_repeat('====',$vo[level] ); echo ($vo["cname"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="type" class="col-sm-2 control-label no-padding-right">商品类型信息</label>
+                                            <div class="col-sm-6">
+                                                <select name="type" id="type" class="form-control">
+                                                    <option value="">请选择类型信息</option>
+                                                    <option value="0">其他</option>
+                                                    <option value="1">新品</option>
+                                                    <option value="2">热卖</option>
+                                                    <option value="3">直降</option>
+                                                    <option value="4">爆款</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="content1" class="col-sm-2 control-label no-padding-right">商品详细信息</label>
+                                            <div class="col-sm-6">
+                                                <textarea name="text" id="content1" cols="60" rows="5"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="content2" class="col-sm-2 control-label no-padding-right">商品配置信息</label>
+                                            <div class="col-sm-6">
+                                                <textarea name="config" id="content2" cols="60" rows="5"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="img" class="col-sm-2 control-label no-padding-right">商品图片</label>
+                                            <div class="col-sm-6">
+                                                <input class="" id="img" placeholder="" name="img"  type="file">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="" class="col-sm-2 control-label no-padding-right">商品多图</label>
+                                            <div class="col-sm-6">
+                                                <input  placeholder="" name="imgs[]"  type="file">
+                                                <input  placeholder="" name="imgs[]"  type="file">
+                                                <input  placeholder="" name="imgs[]"  type="file">
+                                            </div>
+                                        </div>
 
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
@@ -297,6 +352,17 @@
         <!-- /Page Content -->
     </div>
 </div>
+
+<script src="http://127.0.0.1/yctsp/Public/ueditor//ueditor.config.js"></script>
+<script src="http://127.0.0.1/yctsp/Public/ueditor//ueditor.all.min.js"></script>
+<script src="http://127.0.0.1/yctsp/Public/ueditor//lang/zh-cn/zh-cn.js"></script>
+<script type="text/javascript">
+    UE.getEditor('content1',{initialFrameWidth:800,initialFrameHeight:400,});
+</script>
+<script type="text/javascript">
+    UE.getEditor('content2',{initialFrameWidth:800,initialFrameHeight:400,});
+</script>
+
 
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>

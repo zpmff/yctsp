@@ -145,6 +145,22 @@
             </a>
         </li>
 
+        <li>
+            <a href="/yctsp/index.php/Admin/Order/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">订单管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Order/order_status_index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">订单状态管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
         <!--<li>-->
             <!--<a href="#" class="menu-dropdown">-->
                 <!--<i class="menu-icon fa fa-gear"></i>-->

@@ -9,7 +9,7 @@
 namespace Common\Model;
 use Think\Model;
 
-class GoodsModel extends Model {
+class OrderModel extends Model {
 
     protected $_validate = array(
         array('username','require','管理员名称不能为空',0,'regex',3), //在新增和修改的时候，都必须验证name 必须存在
@@ -27,6 +27,10 @@ class GoodsModel extends Model {
         array('password','md5',3,'function') , // 对password字段在新增和编辑的时候使md5函数处理
 
     );
+
+
+
+
 
 
 }

@@ -228,9 +228,9 @@
                         <a href="#">系统</a>
                     </li>
                     <li>
-                        <a href="#">配置管理</a>
+                        <a href="#">订单状态管理</a>
                     </li>
-                    <li class="active">配置管理</li>
+                    <li class="active">添加订单状态</li>
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
@@ -242,7 +242,7 @@
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <div class="widget">
                             <div class="widget-header bordered-bottom bordered-blue">
-                                <span class="widget-caption">配置管理</span>
+                                <span class="widget-caption">新增订单状态</span>
                             </div>
                             <div class="widget-body">
                                 <div id="horizontal-form">
@@ -250,34 +250,12 @@
                                     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 
                                         <div class="form-group">
-                                            <label for="TITLE" class="col-sm-2 control-label no-padding-right">网站标题</label>
+                                            <label for="name" class="col-sm-2 control-label no-padding-right">订单状态名称</label>
                                             <div class="col-sm-6">
-                                                <input class="form-control" id="TITLE" placeholder="" name="TITLE" required="" type="text" value="<?php echo ($config["TITLE"]); ?>">
+                                                <input class="form-control" id="name" placeholder="" name="name" required="" type="text">
                                             </div>
                                             <p class="help-block col-sm-4 red">* 必填</p>
                                         </div>
-
-                                        <div class="form-group">
-                                            <label for="KEYWORDS" class="col-sm-2 control-label no-padding-right">关键字</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="KEYWORDS" placeholder="" name="KEYWORDS"  type="text" value="<?php echo ($config["KEYWORDS"]); ?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="DESCRIPTION" class="col-sm-2 control-label no-padding-right">描述</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="DESCRIPTION" placeholder="" name="DESCRIPTION"  type="text" value="<?php echo ($config["DESCRIPTION"]); ?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="BANQUAN" class="col-sm-2 control-label no-padding-right">版权</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="BANQUAN" placeholder="" name="BANQUAN"  type="text" value="<?php echo ($config["BANQUAN"]); ?>">
-                                            </div>
-                                        </div>
-
 
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
@@ -297,6 +275,7 @@
         <!-- /Page Content -->
     </div>
 </div>
+
 
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>

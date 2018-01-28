@@ -12,7 +12,7 @@
                 <div class="page-breadcrumbs">
                     <ul class="breadcrumb">
                         <li><a href="#">系统</a></li>
-                        <li class="active">商品管理</li>
+                        <li class="active">订单管理</li>
                     </ul>
                 </div>
                 <!-- /Page Breadcrumb -->
@@ -20,7 +20,7 @@
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="添加商品" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '__CONTROLLER__/add'"> <i class="fa fa-plus"></i> 添加商品</button>
+<button type="button" tooltip="添加管理员" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '__CONTROLLER__/add'"> <i class="fa fa-plus"></i> 添加订单</button>
 <button type="button" tooltip="批量删除" class="btn btn-sm btn-azure btn-addon" onClick="javascript:document.getElementById('myForm').submit()"> <i class="fa fa-plus"></i> 批量删除</button>
 
 <div class="row">
@@ -32,14 +32,12 @@
                         <thead class="">
                             <tr>
                                 <th class="text-center" width="2%"></th>
-                                <th class="text-center">商品id</th>
-                                <th class="text-center">商品名称</th>
-                                <th class="text-center">商品信息</th>
-                                <th class="text-center">商品图片</th>
-                                <th class="text-center">商品价格</th>
-                                <th class="text-center">商品数量</th>
-                                <th class="text-center">商品分类cid</th>
-                                <th class="text-center">商品分类type</th>
+                                <th class="text-center">订单ID</th>
+                                <th class="text-center">订单名称</th>
+                                <th class="text-center">订单信息</th>
+                                <th class="text-center">父类</th>
+                                <th class="text-center">订单路径</th>
+                                <th class="text-center">添加子类</th>
                                 <th class="text-center">操作</th>
                             </tr>
                         </thead>
@@ -47,28 +45,31 @@
 
                         <form action="__CONTROLLER__/Adelete" method="post" id="myForm" >
 
-                        <volist name="goodses" id="vo">
+                        <volist name="cates" id="vo">
                            <tr>
                                 <td align="center">
                                     <input type="checkbox" name="id[]" value="{$vo.ad_id}">
                                 </td>
                                 <td align="center">{$vo.id}</td>
-                                <td align="center"><a href="__CONTROLLER__/picList/id/{$vo.id}">{$vo.name}</a></td>
+                                <td align="left" width="30%"><?php echo str_repeat("--------",$vo['level']); ?> {$vo.cname}</td>
                                 <td align="center">{$vo.info}</td>
-                                <td align="center"><img src="__ROOT__/{$vo.img}" alt=""></td>
-                                <td align="center">{$vo.price}</td>
-                               <td align="center">{$vo.num}</td>
-                               <td align="center">{$vo.cname}</td>
-                               <td align="center">
-                                   <switch name="$vo.type">
-                                       <case value="1">新品</case>
-                                       <case value="2">热卖</case>
-                                       <case value="3">直降</case>
-                                       <case value="4">爆款</case>
-                                       <default />其他
-                                   </switch>
-                               </td>
-                                <td align="center" width="10%">
+                                <td align="center">{$vo.pid}</td>
+                                <td align="center">{$vo.path}</td>
+                                <td align="center">
+                                    <?php
+                                    $arr = explode(',',$vo[path]);
+                                    $size = count($arr);
+                                ?>
+
+                                    <if condition="$size lt 3 ">
+                                        <a href="__CONTROLLER__/addZilei/pid/{$vo.id}/path/{$vo.path}" class="btn btn-primary btn-sm shiny">
+                                            <i class="fa fa-edit"></i> 添加子类
+                                        </a>
+                                        <else /> 不能添加子类了
+                                    </if>
+                                </td>
+                                <td align="center">
+
                                     <a href="__CONTROLLER__/edit/id/{$vo.id}" class="btn btn-primary btn-sm shiny">
                                         <i class="fa fa-edit"></i> 编辑
                                     </a>
@@ -84,7 +85,6 @@
                         </tbody>
 
                     </table>
-                    {$page}
                 </div>
                 <div>
                 	                </div>

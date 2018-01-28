@@ -82,11 +82,11 @@
 
 <!-- /头部 -->
 
-<div class="main-container container-fluid">
-    <div class="page-container">
-        <!-- Page Sidebar -->
+	<div class="main-container container-fluid">
+		<div class="page-container">
+            <!-- Page Sidebar -->
 
-        <!-- Page Sidebar -->
+            <!-- Page Sidebar -->
 <div class="page-sidebar" id="sidebar">
     <!-- Page Sidebar Header-->
     <div class="sidebar-header-wrapper">
@@ -218,85 +218,97 @@
 </div>
 <!-- /Page Sidebar -->
 
-        <!-- /Page Sidebar -->
-        <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">系统</a>
-                    </li>
-                    <li>
-                        <a href="#">配置管理</a>
-                    </li>
-                    <li class="active">配置管理</li>
-                </ul>
-            </div>
-            <!-- /Page Breadcrumb -->
-
-            <!-- Page Body -->
-            <div class="page-body">
-
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <div class="widget">
-                            <div class="widget-header bordered-bottom bordered-blue">
-                                <span class="widget-caption">配置管理</span>
-                            </div>
-                            <div class="widget-body">
-                                <div id="horizontal-form">
-
-                                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
-
-                                        <div class="form-group">
-                                            <label for="TITLE" class="col-sm-2 control-label no-padding-right">网站标题</label>
-                                            <div class="col-sm-6">
-                                                <input class="form-control" id="TITLE" placeholder="" name="TITLE" required="" type="text" value="<?php echo ($config["TITLE"]); ?>">
-                                            </div>
-                                            <p class="help-block col-sm-4 red">* 必填</p>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="KEYWORDS" class="col-sm-2 control-label no-padding-right">关键字</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="KEYWORDS" placeholder="" name="KEYWORDS"  type="text" value="<?php echo ($config["KEYWORDS"]); ?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="DESCRIPTION" class="col-sm-2 control-label no-padding-right">描述</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="DESCRIPTION" placeholder="" name="DESCRIPTION"  type="text" value="<?php echo ($config["DESCRIPTION"]); ?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="BANQUAN" class="col-sm-2 control-label no-padding-right">版权</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="BANQUAN" placeholder="" name="BANQUAN"  type="text" value="<?php echo ($config["BANQUAN"]); ?>">
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                                <button type="submit" class="btn btn-default">保存信息</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li><a href="#">系统</a></li>
+                        <li class="active">商品管理</li>
+                    </ul>
                 </div>
+                <!-- /Page Breadcrumb -->
 
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加商品" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '/yctsp/index.php/Admin/Goods/add'"> <i class="fa fa-plus"></i> 添加商品</button>
+<button type="button" tooltip="批量删除" class="btn btn-sm btn-azure btn-addon" onClick="javascript:document.getElementById('myForm').submit()"> <i class="fa fa-plus"></i> 批量删除</button>
+
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+                                <th class="text-center" width="2%"></th>
+                                <th class="text-center">商品id</th>
+                                <th class="text-center">商品名称</th>
+                                <th class="text-center">商品信息</th>
+                                <th class="text-center">商品图片</th>
+                                <th class="text-center">商品价格</th>
+                                <th class="text-center">商品数量</th>
+                                <th class="text-center">商品分类cid</th>
+                                <th class="text-center">商品分类type</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        <form action="/yctsp/index.php/Admin/Goods/Adelete" method="post" id="myForm" >
+
+                        <?php if(is_array($goodses)): $i = 0; $__LIST__ = $goodses;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+                                <td align="center">
+                                    <input type="checkbox" name="id[]" value="<?php echo ($vo["ad_id"]); ?>">
+                                </td>
+                                <td align="center"><?php echo ($vo["id"]); ?></td>
+                                <td align="center"><a href="/yctsp/index.php/Admin/Goods/picList/id/<?php echo ($vo["id"]); ?>"><?php echo ($vo["name"]); ?></a></td>
+                                <td align="center"><?php echo ($vo["info"]); ?></td>
+                                <td align="center"><img src="/yctsp/<?php echo ($vo["img"]); ?>" alt=""></td>
+                                <td align="center"><?php echo ($vo["price"]); ?></td>
+                               <td align="center"><?php echo ($vo["num"]); ?></td>
+                               <td align="center"><?php echo ($vo["cname"]); ?></td>
+                               <td align="center">
+                                   <?php switch($$vo["type"]): case "1": ?>新品<?php break;?>
+                                       <?php case "2": ?>热卖<?php break;?>
+                                       <?php case "3": ?>直降<?php break;?>
+                                       <?php case "4": ?>爆款<?php break;?>
+                                       <?php default: ?>其他<?php endswitch;?>
+                               </td>
+                                <td align="center" width="10%">
+                                    <a href="/yctsp/index.php/Admin/Goods/edit/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-sm shiny">
+                                        <i class="fa fa-edit"></i> 编辑
+                                    </a>
+                                    <a href="#" onClick="warning('确实要删除吗', '/yctsp/index.php/Admin/Goods/delete/id/<?php echo ($vo["id"]); ?>')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+
+                        </form>
+
+                        </tbody>
+
+                    </table>
+                    <?php echo ($page); ?>
+                </div>
+                <div>
+                	                </div>
             </div>
-            <!-- /Page Body -->
         </div>
-        <!-- /Page Content -->
     </div>
 </div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
 
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>

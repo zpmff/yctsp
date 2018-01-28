@@ -82,11 +82,11 @@
 
 <!-- /头部 -->
 
-<div class="main-container container-fluid">
-    <div class="page-container">
-        <!-- Page Sidebar -->
+	<div class="main-container container-fluid">
+		<div class="page-container">
+            <!-- Page Sidebar -->
 
-        <!-- Page Sidebar -->
+            <!-- Page Sidebar -->
 <div class="page-sidebar" id="sidebar">
     <!-- Page Sidebar Header-->
     <div class="sidebar-header-wrapper">
@@ -218,85 +218,41 @@
 </div>
 <!-- /Page Sidebar -->
 
-        <!-- /Page Sidebar -->
-        <!-- Page Content -->
-        <div class="page-content">
-            <!-- Page Breadcrumb -->
-            <div class="page-breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <a href="#">系统</a>
-                    </li>
-                    <li>
-                        <a href="#">配置管理</a>
-                    </li>
-                    <li class="active">配置管理</li>
-                </ul>
-            </div>
-            <!-- /Page Breadcrumb -->
-
-            <!-- Page Body -->
-            <div class="page-body">
-
-                <div class="row">
-                    <div class="col-lg-12 col-sm-12 col-xs-12">
-                        <div class="widget">
-                            <div class="widget-header bordered-bottom bordered-blue">
-                                <span class="widget-caption">配置管理</span>
-                            </div>
-                            <div class="widget-body">
-                                <div id="horizontal-form">
-
-                                    <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
-
-                                        <div class="form-group">
-                                            <label for="TITLE" class="col-sm-2 control-label no-padding-right">网站标题</label>
-                                            <div class="col-sm-6">
-                                                <input class="form-control" id="TITLE" placeholder="" name="TITLE" required="" type="text" value="<?php echo ($config["TITLE"]); ?>">
-                                            </div>
-                                            <p class="help-block col-sm-4 red">* 必填</p>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="KEYWORDS" class="col-sm-2 control-label no-padding-right">关键字</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="KEYWORDS" placeholder="" name="KEYWORDS"  type="text" value="<?php echo ($config["KEYWORDS"]); ?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="DESCRIPTION" class="col-sm-2 control-label no-padding-right">描述</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="DESCRIPTION" placeholder="" name="DESCRIPTION"  type="text" value="<?php echo ($config["DESCRIPTION"]); ?>">
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="BANQUAN" class="col-sm-2 control-label no-padding-right">版权</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="BANQUAN" placeholder="" name="BANQUAN"  type="text" value="<?php echo ($config["BANQUAN"]); ?>">
-                                            </div>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                                <button type="submit" class="btn btn-default">保存信息</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li><a href="#">系统</a></li>
+                        <li class="active">商品管理</li>
+                    </ul>
                 </div>
+                <!-- /Page Breadcrumb -->
 
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加商品" class="btn btn-sm btn-azure btn-addon" onClick="">  图片列表</button>
+
+
+                    <div class="row">
+
+                        <?php if(is_array($goods_imges)): $i = 0; $__LIST__ = $goods_imges;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div class="col-xs-6 col-md-3">
+                            <a href="#" class="thumbnail">
+                                    <img src="/yctsp/<?php echo ($vo["img"]); ?>" alt="...">
+                            </a>
+                        </div><?php endforeach; endif; else: echo "" ;endif; ?>
+
+                    </div>
+
+                </div>
+                <!-- /Page Body -->
             </div>
-            <!-- /Page Body -->
-        </div>
-        <!-- /Page Content -->
-    </div>
-</div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
 
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>
