@@ -174,7 +174,7 @@ class GoodsController extends Controller {
         $id = I('id');
 //        pri($id);
         $goods_img = M('Goods_img');
-        $goods_imges = $goods_img->order('id desc')->select();
+        $goods_imges = $goods_img->where(array('gid'=> $id) ) ->order('id desc')->select();
 //        pri($goods_imges);
         $this->assign( 'goods_imges' ,$goods_imges);
         $this->display();
