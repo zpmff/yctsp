@@ -233,7 +233,7 @@
                 <!-- Page Body -->
                 <div class="page-body">
                     
-<button type="button" tooltip="添加管理员" class="btn btn-sm btn-azure btn-addon" onClick="javascript:;"> <i class="fa fa-plus"></i> 订单列表</button>
+<button type="button" tooltip="添加管理员" class="btn btn-sm btn-azure btn-addon" onClick="javascript:;"> <i class="fa fa-plus"></i> 订单商品列表</button>
 
 
 <div class="row">
@@ -244,38 +244,26 @@
                     <table class="table table-bordered table-hover">
                         <thead class="">
                             <tr>
-                                <th class="text-center" width="2%"></th>
-                                <th class="text-center">订单ID</th>
-                                <th class="text-center">订单号</th>
-                                <th class="text-center">购买者</th>
-                                <th class="text-center">下单时间</th>
-                                <th class="text-center">收货地址</th>
-                                <th class="text-center">订单状态</th>
-                                <th class="text-center">操作</th>
+
+                                <th class="text-center">商品id</th>
+                                <th class="text-center">商品名称</th>
+                                <th class="text-center">商品信息</th>
+                                <th class="text-center">商品图片</th>
+                                <th class="text-center">商品分类cid</th>
+                                <th class="text-center">商品分类type</th>
+
                             </tr>
                         </thead>
                         <tbody>
 
-                        <form action="/yctsp/index.php/Admin/Order/Adelete" method="post" id="myForm" >
-
-                        <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-                                <td align="center">
-                                    <input type="checkbox" name="id[]" value="<?php echo ($vo["id"]); ?>">
-                                </td>
+                        <?php if(is_array($goodes)): $i = 0; $__LIST__ = $goodes;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
                                 <td align="center"><?php echo ($vo["id"]); ?></td>
-                                <td align="left"><a href="/yctsp/index.php/Admin/Order/goodList/id/<?php echo ($vo["id"]); ?>"><?php echo ($vo["code"]); ?></a></td> <!--查商品表，需要传入订单id，多对多查所有商品-->
-                                <td align="center"><?php echo ($vo["name"]); ?></td>
-                                <td align="center"><?php echo (date("Y-m-d H:i:s",$vo["time"])); ?></td>
-                                <td align="center"><a href="/yctsp/index.php/Admin/Order/address/uid/<?php echo ($vo["uid"]); ?>">收货地址</a></td>  <!--查收货地址，需要传入用户id，来关联查地址表-->
-                                <td align="center"><?php echo ($vo["osname"]); ?></td>
-                                <td align="center">
-                                    <a href="/yctsp/index.php/Admin/Order/edit/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-sm shiny">
-                                        <i class="fa fa-edit"></i> 编辑
-                                    </a>
-                                </td>
+                                <td align="left"><?php echo ($vo["name"]); ?></td>
+                                <td align="center"><?php echo ($vo["info"]); ?></td>
+                                <td align="center"><img src="/yctsp/<?php echo ($vo["img"]); ?>" alt=""></td>
+                                <td align="center"><?php echo ($vo["cid"]); ?></td>
+                                <td align="center"><?php echo ($vo["type"]); ?></td>
                             </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-
-                        </form>
 
                         </tbody>
 

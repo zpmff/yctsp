@@ -51,10 +51,10 @@
                                     <input type="checkbox" name="id[]" value="{$vo.id}">
                                 </td>
                                 <td align="center">{$vo.id}</td>
-                                <td align="left"><a href="__CONTROLLER__/address/goodList/{$vo.gid}">{$vo.code}</a></td>
+                                <td align="left"><a href="__CONTROLLER__/goodList/id/{$vo.id}">{$vo.code}</a></td> <!--查商品表，需要传入订单id，多对多查所有商品-->
                                 <td align="center">{$vo.name}</td>
                                 <td align="center">{$vo.time|date="Y-m-d H:i:s",###}</td>
-                                <td align="center"><a href="__CONTROLLER__/address/uid/{$vo.uid}">收货地址</a></td>
+                                <td align="center"><a href="__CONTROLLER__/address/uid/{$vo.uid}">收货地址</a></td>  <!--查收货地址，需要传入用户id，来关联查地址表-->
                                 <td align="center">{$vo.osname}</td>
                                 <td align="center">
                                     <a href="__CONTROLLER__/edit/id/{$vo.id}" class="btn btn-primary btn-sm shiny">

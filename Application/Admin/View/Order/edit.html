@@ -37,22 +37,19 @@
                                     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 
                                         <div class="form-group">
-                                            <label for="cname" class="col-sm-2 control-label no-padding-right">订单名称</label>
+                                            <label for="osid" class="col-sm-2 control-label no-padding-right">订单状态</label>
                                             <div class="col-sm-6">
-                                                <input class="form-control" id="cname" placeholder="" name="cname" required="" type="text" value="{$catesa.cname}">
+                                                <select name="osid" id="osid">
+                                                    <volist name='order_statuses'  id="vo">
+                                                        <option value="{$vo.id}"    <if condition="$vo[id] eq $orderesa[osid] "> selected </if>  >{$vo.name}</option>
+                                                    </volist>
+                                                </select>
                                             </div>
                                             <p class="help-block col-sm-4 red">* 必填</p>
                                         </div>
 
-                                        <div class="form-group">
-                                            <label for="info" class="col-sm-2 control-label no-padding-right">订单信息</label>
-                                            <div class="col-sm-6 ">
-                                                <input class="form-control" id="info" placeholder="" name="info"  type="text" value="{$catesa.info}">
-                                            </div>
-                                        </div>
 
-
-                                        <input type="hidden" name="id" value="{$catesa.id}">
+                                        <input type="hidden" name="id" value="{$orderesa.id}">
 
                                         <div class="form-group">
                                             <div class="col-sm-offset-2 col-sm-10">
@@ -72,10 +69,3 @@
         <!-- /Page Content -->
     </div>
 </div>
-
-<script src="__UEDITOR__/ueditor.config.js"></script>
-<script src="__UEDITOR__/ueditor.all.min.js"></script>
-<script src="__UEDITOR__/lang/zh-cn/zh-cn.js"></script>
-<script type="text/javascript">
-    UE.getEditor('content',{initialFrameWidth:800,initialFrameHeight:400,});
-</script>

@@ -8,6 +8,7 @@
 'DB_PREFIX' => '',
 'DB_CHARSET' => 'utf8',
 'DB_DEBUG' => '1',
+'SHOW_PAGE_TRACE' =>true,
 'TITLE' => 'zpz',
 'KEYWORDS' => 'mffmffmffmff',
 'DESCRIPTION' => 'zpandmffzpandmffzpandmffzpandmffzpandmff',

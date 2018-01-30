@@ -38,7 +38,7 @@ class OrderController extends Controller {
 
         $addr = M('address');
 
-        $addressa = $addr ->where(array('uid'=>$uid))->select();
+        $addressa = $addr ->where(array('uid'=>$uid))->find();
 //        pri($addressa);
 
         $this->assign('addressa',$addressa);
@@ -47,80 +47,68 @@ class OrderController extends Controller {
 
 
 
-    public function add(){
+    public function goodList(){
 
-        if(IS_POST){
+        $id = I('id') + 0;
+//        pri($id);
 
-//            pri($_POST);
-            $data['username']  =  I('username');
-            $data['password']  =  I('password');
-            $data['status']  =  I('status') + 0;
-            $data['time']  =   time();
+        $order_good = M('order_good ');
+        $order_goodes = $order_good->where(array('oid'=>$id))->select();
 
-
-            $admin  =  D('Common/Admin');
-
-            if( $admin ->create($data)){
-                if($admin->add()){
-                    $this->success('新的管理员添加成功',U('index'),3);
-                }else{
-                    $this->error('新的管理员添加失败');
-                }
-
-            }else{
-                $this->error($admin->getError());
-            }
-
-        }else{
-            $this->display();
+//        var_dump($order_goodes);
+        $gids = array();
+        foreach( $order_goodes as $k =>$v){
+            $gids[] = $v['gid'];
         }
+//        pri($gids);
+        $goods = M('goods');
+        $map['id']  = array('IN',$gids);
+        $goodes = $goods->where($map)->select();
+//        var_dump($goodes);
+
+        $this->assign( 'goodes',$goodes);
+        $this->display();
     }
 
 
+    //修改只能修改订单状态，别的不能修改
     public function edit(){
 
         if(IS_POST){
 
     //            pri($_POST);
-            $data['username']  =  I('username');
-            $data['password']  =  I('password');
-            $data['status']  =  I('status') + 0;
+            $data['osid']  =  I('osid') + 0;
             $data['id']  =   I('id') + 0;
+//            pri($data);
 
+            $order = D('order');
 
-            $admin  =  D('Common/Admin');
-
-            if( $admin ->create($data)){
-                $res = $admin->save();
+            if( $order ->create($data)){
+                $res = $order->save();
                 if( $res !== false ){
-                    $this->success('管理员修改成功',U('index'),3);
+                    $this->success('订单状态修改成功',U('index'),3);
                 }else{
-                    $this->error('管理员修改失败');
+                    $this->error('订单状态修改失败');
                 }
             }else{
-                $this->error($admin->getError());
+                $this->error($order->getError());
             }
 
         }else{
             $id  =   I('id') + 0;
-            $admin  =  D('Common/Admin');
-            $adminesa = $admin->where(array('id'=>$id))->find();
-            $this->assign('adminesa',$adminesa);
+            $order = D('order');
+            $orderesa = $order->where(array('id'=>$id))->find();
+            $this->assign('orderesa',$orderesa);
+
+            $order_status = D('order_status');
+            $order_statuses = $order_status->select();
+            $this->assign('order_statuses',$order_statuses);
+
             $this->display();
         }
     }
 
 
-    public function delete(){
-        $id  =   I('id') + 0;
-        $admin  =  D('Common/Admin');
-
-        if($admin -> delete($id)){
-            $this->success('管理员删除成功',U('index'),3);
-        }else{
-            $this->error('管理员删除失败');
-        }
-    }
 
 
 //=========================================================================================================================================

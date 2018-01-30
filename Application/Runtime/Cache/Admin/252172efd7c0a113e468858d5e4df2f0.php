@@ -234,7 +234,7 @@
                 </ul>
             </div>
             <!-- /Page Breadcrumb -->
-
+            <!--<?php var_dump(addressa) ;?>-->
             <!-- Page Body -->
             <div class="page-body">
 
@@ -242,60 +242,52 @@
                     <div class="col-lg-12 col-sm-12 col-xs-12">
                         <div class="widget">
                             <div class="widget-header bordered-bottom bordered-blue">
-                                <span class="widget-caption">订单管理</span>
+                                <span class="widget-caption">收货地址</span>
                             </div>
                             <div class="widget-body">
-                                <div id="horizontal-form">
 
-                                        <div class="form-group">
-                                            <label  class="col-sm-2 control-label no-padding-right">真实姓名</label>
-                                            <div class="col-sm-6">
-                                                <lable id="sname"><?php echo ($addressa["sname"]); ?></lable>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label  class="col-sm-2 control-label no-padding-right">电话号码</label>
-                                            <div class="col-sm-6 ">
-                                                <lable id="phone"><?php echo ($addressa["phone"]); ?></lable>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label  class="col-sm-2 control-label no-padding-right">省份</label>
-                                            <div class="col-sm-6 ">
-                                                <lable id="phone"><?php echo ($addressa["sheng"]); ?></lable>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label  class="col-sm-2 control-label no-padding-right">城市</label>
-                                            <div class="col-sm-6 ">
-                                                <lable id="shi"><?php echo ($addressa["shi"]); ?></lable>
-                                            </div>
-                                        </div>
-
-                                    <div class="form-group">
-                                        <label  class="col-sm-2 control-label no-padding-right">区域</label>
-                                        <div class="col-sm-6 ">
-                                            <lable id="qu"><?php echo ($addressa["qu"]); ?></lable>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label  class="col-sm-2 control-label no-padding-right">详细地址</label>
-                                        <div class="col-sm-6 ">
-                                            <lable id="info"><?php echo ($addressa["info"]); ?></lable>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label  class="col-sm-2 control-label no-padding-right">email</label>
-                                        <div class="col-sm-6 ">
-                                            <lable id="email"><?php echo ($addressa["email"]); ?></lable>
-                                        </div>
-                                    </div>
-
+                                <table class="table table-bordered table-hover">
+                                    <thead class="">
+                                    <tr>
+                                        <th class="text-center" width="30%">字段</th>
+                                        <th class="text-center">内容</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td align="right">真实姓名</td>
+                                        <td align="left"><?php echo ($addressa["sname"]); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">电话号码</td>
+                                        <td align="center"><?php echo ($addressa["phone"]); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">真实姓名</td>
+                                        <td align="center"><?php echo ($addressa["sname"]); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">省份</td>
+                                        <td align="center"><?php echo ($addressa["sheng"]); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">城市</td>
+                                        <td align="center"><?php echo ($addressa["shi"]); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">区域</td>
+                                        <td align="center"><?php echo ($addressa["qu"]); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">详细地址</td>
+                                        <td align="center"><?php echo ($addressa["info"]); ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td align="left">email</td>
+                                        <td align="center"><?php echo ($addressa["email"]); ?></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
 
                                 </div>
                             </div>
