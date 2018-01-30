@@ -5,29 +5,47 @@ class OrderController extends Controller {
     public function index(){
 
 
-        $sql= "SELECT * FROM `order` as o LEFT JOIN `user` as u ON o.uid = u.id LEFT JOIN order_status as os  AND o.osid = os.id;";
+//        $sql= "SELECT o.id as id , o.code as code , u.name as name, o.time as time ,os.name,ad.sheng as sheng, ad.shi as shi ,ad.qu as qu
+//               FROM `order` as o LEFT JOIN `user` as u  ON o.uid = u.id LEFT JOIN order_status as os  ON o.osid = os.id
+//               LEFT JOIN address as ad on ad.uid = u.id";
 
-        $user = M('order'); // 实例化对象
-        $count      = $user ->count();// 查询满足要求的总记录数
+        $order = D('order'); // 实例化对象
+        $count      = $order ->count();// 查询满足要求的总记录数
         $Page       = new \Think\Page($count,3);// 实例化分页类 传入总记录数和每页显示的记录数2
         $show       = $Page->show();// 分页显示输出
 
-        // 进行分页数据查询 注意limit方法的参数要使用Page类的属性
-        $list = $user ->field()->order('id desc')->limit($Page->firstRow.','.$Page->listRows)->select();
 
+        // 进行分页数据查询 注意limit方法的参数要使用Page类的属性,连表查询
+        $list = $order->table('order , user , order_status os')
+            ->field('order.id as id ,order.code as code , order.uid as uid , order.gid as gid ,user.name as name ,order.time as time, os.name as osname')
+            ->order('order.id desc')
+            ->where('order.uid=user.id AND order.osid=os.id')
+            ->limit($Page->firstRow.','.$Page->listRows)->select();
+
+//        pri($list);
         $this->assign('list',$list);// 赋值数据集
         $this->assign('page',$show);// 赋值分页输出
-//        pri($list);
+
         $this->display('list'); // 输出模板
 
 
-
-
-        $admines = $admin->select();
-//        var_dump($admines);
-        $this->assign('admines',$admines);
-        $this->display('list');
     }
+
+    public function address(){
+
+        $uid = I('uid') + 0;
+//        var_dump($uid);
+
+        $addr = M('address');
+
+        $addressa = $addr ->where(array('uid'=>$uid))->select();
+//        pri($addressa);
+
+        $this->assign('addressa',$addressa);
+        $this->display();
+    }
+
+
 
     public function add(){
 

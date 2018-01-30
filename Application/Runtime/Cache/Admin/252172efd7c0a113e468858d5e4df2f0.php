@@ -82,11 +82,11 @@
 
 <!-- /头部 -->
 
-	<div class="main-container container-fluid">
-		<div class="page-container">
-            <!-- Page Sidebar -->
+<div class="main-container container-fluid">
+    <div class="page-container">
+        <!-- Page Sidebar -->
 
-            <!-- Page Sidebar -->
+        <!-- Page Sidebar -->
 <div class="page-sidebar" id="sidebar">
     <!-- Page Sidebar Header-->
     <div class="sidebar-header-wrapper">
@@ -218,84 +218,97 @@
 </div>
 <!-- /Page Sidebar -->
 
-            <!-- /Page Sidebar -->
-            <!-- Page Content -->
-            <div class="page-content">
-                <!-- Page Breadcrumb -->
-                <div class="page-breadcrumbs">
-                    <ul class="breadcrumb">
-                        <li><a href="#">系统</a></li>
-                        <li class="active">订单管理</li>
-                    </ul>
-                </div>
-                <!-- /Page Breadcrumb -->
-
-                <!-- Page Body -->
-                <div class="page-body">
-                    
-<button type="button" tooltip="添加管理员" class="btn btn-sm btn-azure btn-addon" onClick="javascript:;"> <i class="fa fa-plus"></i> 订单列表</button>
-
-
-<div class="row">
-    <div class="col-lg-12 col-sm-12 col-xs-12">
-        <div class="widget">
-            <div class="widget-body">
-                <div class="flip-scroll">
-                    <table class="table table-bordered table-hover">
-                        <thead class="">
-                            <tr>
-                                <th class="text-center" width="2%"></th>
-                                <th class="text-center">订单ID</th>
-                                <th class="text-center">订单号</th>
-                                <th class="text-center">购买者</th>
-                                <th class="text-center">下单时间</th>
-                                <th class="text-center">收货地址</th>
-                                <th class="text-center">订单状态</th>
-                                <th class="text-center">操作</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        <form action="/yctsp/index.php/Admin/Order/Adelete" method="post" id="myForm" >
-
-                        <?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-                                <td align="center">
-                                    <input type="checkbox" name="id[]" value="<?php echo ($vo["id"]); ?>">
-                                </td>
-                                <td align="center"><?php echo ($vo["id"]); ?></td>
-                                <td align="left"><a href="/yctsp/index.php/Admin/Order/address/goodList/<?php echo ($vo["gid"]); ?>"><?php echo ($vo["code"]); ?></a></td>
-                                <td align="center"><?php echo ($vo["name"]); ?></td>
-                                <td align="center"><?php echo (date("Y-m-d H:i:s",$vo["time"])); ?></td>
-                                <td align="center"><a href="/yctsp/index.php/Admin/Order/address/uid/<?php echo ($vo["uid"]); ?>">收货地址</a></td>
-                                <td align="center"><?php echo ($vo["osname"]); ?></td>
-                                <td align="center">
-                                    <a href="/yctsp/index.php/Admin/Order/edit/id/<?php echo ($vo["id"]); ?>" class="btn btn-primary btn-sm shiny">
-                                        <i class="fa fa-edit"></i> 编辑
-                                    </a>
-                                </td>
-                            </tr><?php endforeach; endif; else: echo "" ;endif; ?>
-
-                        </form>
-
-                        </tbody>
-
-                    </table>
-                    <?php echo ($page); ?>
-                </div>
-                <div>
-                	                </div>
+        <!-- /Page Sidebar -->
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Page Breadcrumb -->
+            <div class="page-breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">系统</a>
+                    </li>
+                    <li>
+                        <a href="#">订单管理</a>
+                    </li>
+                    <li class="active">详细地址</li>
+                </ul>
             </div>
+            <!-- /Page Breadcrumb -->
+
+            <!-- Page Body -->
+            <div class="page-body">
+
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12 col-xs-12">
+                        <div class="widget">
+                            <div class="widget-header bordered-bottom bordered-blue">
+                                <span class="widget-caption">订单管理</span>
+                            </div>
+                            <div class="widget-body">
+                                <div id="horizontal-form">
+
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label no-padding-right">真实姓名</label>
+                                            <div class="col-sm-6">
+                                                <lable id="sname"><?php echo ($addressa["sname"]); ?></lable>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label no-padding-right">电话号码</label>
+                                            <div class="col-sm-6 ">
+                                                <lable id="phone"><?php echo ($addressa["phone"]); ?></lable>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label no-padding-right">省份</label>
+                                            <div class="col-sm-6 ">
+                                                <lable id="phone"><?php echo ($addressa["sheng"]); ?></lable>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label  class="col-sm-2 control-label no-padding-right">城市</label>
+                                            <div class="col-sm-6 ">
+                                                <lable id="shi"><?php echo ($addressa["shi"]); ?></lable>
+                                            </div>
+                                        </div>
+
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label no-padding-right">区域</label>
+                                        <div class="col-sm-6 ">
+                                            <lable id="qu"><?php echo ($addressa["qu"]); ?></lable>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label no-padding-right">详细地址</label>
+                                        <div class="col-sm-6 ">
+                                            <lable id="info"><?php echo ($addressa["info"]); ?></lable>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label no-padding-right">email</label>
+                                        <div class="col-sm-6 ">
+                                            <lable id="email"><?php echo ($addressa["email"]); ?></lable>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /Page Body -->
         </div>
+        <!-- /Page Content -->
     </div>
 </div>
-
-                </div>
-                <!-- /Page Body -->
-            </div>
-            <!-- /Page Content -->
-		</div>	
-	</div>
-
 
 <!--Basic Scripts-->
 <script src="http://127.0.0.1/yctsp/Application/Admin/Public/style/jquery_002.js"></script>
