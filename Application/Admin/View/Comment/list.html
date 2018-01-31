@@ -1,0 +1,369 @@
+
+	<div class="main-container container-fluid">
+		<div class="page-container">
+            <!-- Page Sidebar -->
+
+            <include file="Public:left" />
+
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li><a href="#">系统</a></li>
+                        <li class="active">评论管理</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+
+                <!-- Page Body -->
+                <div class="page-body">
+                    
+<button type="button" tooltip="添加用户" class="btn btn-sm btn-azure btn-addon" onClick="javascript:window.location.href = '__CONTROLLER__/add'"> <i class="fa fa-plus"></i> 添加用户</button>
+<button type="button" tooltip="批量删除" class="btn btn-sm btn-azure btn-addon" onClick="javascript:document.getElementById('myForm').submit()"> <i class="fa fa-plus"></i> 批量删除</button>
+
+<div class="row">
+    <div class="col-lg-12 col-sm-12 col-xs-12">
+        <div class="widget">
+            <div class="widget-body">
+                <div class="flip-scroll">
+                    <table class="table table-bordered table-hover">
+                        <thead class="">
+                            <tr>
+
+                                <th class="text-center">评论ID</th>
+                                <th class="text-center">物品名称</th>
+                                <th class="text-center">物品图片</th>
+                                <th class="text-center">购买者</th>
+                                <th class="text-center">评论内容</th>
+                                <th class="text-center">评论时间</th>
+                                <th class="text-center">星数</th>
+                                <th class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        <form action="__CONTROLLER__/Adelete" method="post" id="myForm" >
+
+                        <volist name="list" id="vo">
+                           <tr>
+
+                                <td align="center">{$vo.id}</td>
+                                <td align="center">{$vo.gname}</td>
+                                <td align="center">{$vo.img}</td>
+                                <td align="center">{$vo.uname}</td>
+                                <td align="center">{$vo.text}</td>
+                               <td align="center">{$vo.time|date="Y-m-d",###}</td>
+                                <td align="center">{$vo.star}</td>
+
+                                <td align="center">
+                                    <a href="#" onClick="warning('确实要删除吗', '__CONTROLLER__/delete/id/{$vo.id}')" class="btn btn-danger btn-sm shiny">
+                                        <i class="fa fa-trash-o"></i> 删除
+                                    </a>
+                                </td>
+                            </tr>
+                        </volist>
+
+                        </form>
+
+                        </tbody>
+
+                    </table>
+                    {$page}
+                </div>
+                <div>
+                	                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+		</div>	
+	</div>
+
+
+
+    <!--模态框，用来弹框的，查看用户详情-->
+    <!-- Modal -->
+    <div class="modal fade" id="select_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="Lal">查看用户详情</h4>
+                </div>
+                <div class="modal-body" id="select_user_info">
+
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="sex_zhanshi" class="col-sm-4 control-label">性别</label>
+                            <label for="sex_zhanshi" class="col-sm-2  control-label" id="sex_zhanshi"></label>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-4 control-label">生日</label>
+                            <label for="sex" class="col-sm-2  control-label" id="birthday_zhanshi"></label>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-4 control-label">真实姓名</label>
+                            <label for="sex" class="col-sm-2  control-label" id="zsname_zhanshi"></label>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-4 control-label">省</label>
+                            <label for="sex" class="col-sm-2  control-label" id="sheng_zhanshi"></label>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-4 control-label">市</label>
+                            <label for="sex" class="col-sm-2  control-label" id="shi_zhanshi"></label>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-4 control-label">区</label>
+                            <label for="sex" class="col-sm-2  control-label" id="qu_zhanshi"></label>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="close_select_model()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--模态框，用来弹框的，显示暂无用户信息-->
+    <!-- Modal -->
+
+    <div class="modal fade" id="no_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="Label">查看用户详情</h4>
+                </div>
+                <div class="modal-body" id="selo">
+                    暂无该用户详情
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="close_Modal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!--模态框，用来弹框的，编辑用户详情-->
+    <!-- Modal -->
+    <div class="modal fade" id="edit_model" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">编辑用户详情</h4>
+                </div>
+                <div class="modal-body">
+
+                    <form class="form-horizontal" method="post" action="__CONTROLLER__/ajax_edit_userInfo" id="edit_from">
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="sex"  name="sex" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-2 control-label">生日</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="birthday"  name="birthday" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-2 control-label">真实姓名</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="zsname"  name="zsname" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-2 control-label">省份</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="sheng"  name="sheng" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-2 control-label">城市</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="shi"  name="shi" value="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="sex" class="col-sm-2 control-label">区域</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="qu"  name="qu" value="">
+                            </div>
+                        </div>
+
+                        <input type="hidden" name="id" id="id" value="">
+
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary" onclick="edit_form_subm()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--模态框，用来提交修改信息后，如果成功，则提示成功；如果失败，则提交失败-->
+    <!-- Modal -->
+
+    <div class="modal fade" id="edit_result" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="L">修改结果</h4>
+                </div>
+                <div class="modal-body" id="result">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="close_edit_result_Modal()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+   <script>
+
+       //查看用户信息
+       function users(id){
+           $.post("__CONTROLLER__/ajax_userInfo", { id: id },
+                   function(data){
+
+                        //alert(typeof(data));//需要看后台返回的是json字符串 还是对象，如果是字符串的话需要parse解析一下，如exercise的例子；如果直接是对象的话不用解析，直接打印就行，thinkphp就是直接是对象
+                        //alert(data.pic);
+                       //alert( data);
+//                       alert( data == '0');
+
+                       if(data == '0' ){
+
+                           $('#no_model').modal('show');
+
+                       } else {
+                           $('#sex_zhanshi').html(data.sex);
+                           $('#birthday_zhanshi').html(data.birthday);
+                           $('#zsname_zhanshi').html(data.zsname);
+                           $('#sheng_zhanshi').html(data.sheng);
+                           $('#shi_zhanshi').html(data.shi);
+                           $('#qu_zhanshi').html(data.qu);
+
+                           $('#select_model').modal('show');
+                       }
+                   });
+       }
+
+
+       function close_select_model(){
+           $('#select_model').modal('hide');
+       }
+
+       function close_Modal(){
+           $('#no_model').modal('hide');
+       }
+
+       function close_Modal(){
+           $('#no_model').modal('hide');
+       }
+
+       function close_edit_result_Modal(){
+           $('#edit_model').modal('hide');
+           $('#edit_result').modal('hide');
+       }
+
+
+       //编辑用户信息时，需要先载入用户详细信息，如果没有的话，返回暂无此用户信息
+       function select_users(id){
+           $.post("__CONTROLLER__/ajax_userInfo", { id: id },
+                   function(data){
+
+                       //alert(typeof(data));//需要看后台返回的是json字符串 还是对象，如果是字符串的话需要parse解析一下，如exercise的例子；如果直接是对象的话不用解析，直接打印就行，thinkphp就是直接是对象
+                       //alert(data.pic);
+                       //alert( data);
+                       if(data == '0' ){
+
+                           $('#no_model').modal('show');
+
+                       } else {
+                           $('#sex').val(data.sex);
+                           $('#birthday').val(data.birthday);
+                           $('#zsname').val(data.zsname);
+                           $('#sheng').val(data.sheng);
+                           $('#shi').val(data.shi);
+                           $('#qu').val(data.qu);
+                           $('#id').val(data.id);
+
+                           $('#edit_model').modal('show');
+                       }
+                   });
+       }
+
+       //修改用户信息后，提交到后台
+       function  ajax_tijiao(){
+           $.post("__CONTROLLER__/ajax_edit_userInfo",
+                   function(data){
+
+                       //alert(typeof(data));//需要看后台返回的是json字符串 还是对象，如果是字符串的话需要parse解析一下，如exercise的例子；如果直接是对象的话不用解析，直接打印就行，thinkphp就是直接是对象
+                       //alert(data.pic);
+                       //alert( data);
+                       if(data.code == '1001' ){
+                           $('#result').html( data.message );
+                       } else {
+                           $('#result').html(data.message);
+                       }
+                       $('#edit_result').modal('show');
+                   });
+
+       }
+
+       //修改个人信息后的提交请求，因为按键是button 不能submit
+       function edit_form_subm() {
+
+               $.ajax({
+                   type:"post",
+                   url:"__CONTROLLER__/ajax_edit_userInfo",
+                   data:{
+                       sex: $('#sex').val(),//把表单填写值放这里传到后端
+                       birthday:$('#birthday').val(),
+                       zsname:$('#zsname').val(),
+                       sheng:$('#sheng').val(),
+                       shi:$('#shi').val(),
+                       qu:$('#qu').val(),
+                       id:$('#id').val(),
+                   },
+                   success:function (data) {
+//                       alert(data.code);
+                       if(data.code == 1001){
+                           $('#result').html(data.message);
+                       }else{
+                           $('#result').html(data.message);
+                       }
+                       $('#edit_result').modal('show');
+                   }
+               });
+
+       }
+
+
+
+
+   </script>
