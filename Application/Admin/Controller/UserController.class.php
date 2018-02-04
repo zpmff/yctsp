@@ -2,7 +2,7 @@
 namespace Admin\Controller;
 use Think\Controller;
 
-class UserController extends Controller {
+class UserController extends BaseController {
 
 
     public function index(){

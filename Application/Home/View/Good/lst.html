@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+
+<div id="header">
+
+    <nav>
+        <a href="__APP__">首页</a>
+        <a href="__MODULE__/Login/register">注册</a>
+        <a href="__MODULE__/Login/login">登录</a>
+    </nav>
+    <hr>
+</div>
+
+
+<!--商品列表-->
+<volist name="goods" id="vo">
+
+    <div id="banner">
+        <div width="100%" height="100px">
+            <a href="__CONTROLLER__/goodesa/id/{$vo.id}"><img src="__ROOT__/{$vo.img}" alt=""></a>
+        </div>
+        <div>
+            <p>{$vo.name}</p>
+            <p>{$vo.info}</p>
+            <p>{$vo.price}</p>
+            <p>{$vo.type}</p>
+        </div>
+    </div>
+    <hr>
+</volist>
+
+</div>
+
+
+
+</body>
+</html>

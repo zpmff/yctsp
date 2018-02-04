@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+
+<div id="header">
+
+    <nav>
+        <a href="__APP__">首页</a>
+        <a href="__MODULE__/Login/register">注册</a>
+        <a href="__MODULE__/Login/login">登录</a>
+    </nav>
+    <hr>
+</div>
+
+<div>
+    <div width="100%" height="100px">
+       <img src="__ROOT__/{$goodesa.img}" alt="">
+    </div>
+    <div>
+        <p>商品名称：{$goodesa.name}</p>
+        <p>商品简介：{$goodesa.info}</p>
+        <p>商品价格：{$goodesa.price}</p>
+        <p>商品数量：{$goodesa.num}</p>
+        <p>商品介绍：{$goodesa.text}</p>
+        <p>商品配置：{$goodesa.config}</p>
+        <p>商品类别：{$goodesa.type}</p>
+    </div>
+    <a href="__CONTROLLER__/goodesa/id/{$goodesa.id}">加入购物车</a>
+</div>
+
+
+</body>
+</html>
+
+
+
+
+

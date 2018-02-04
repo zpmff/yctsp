@@ -45,11 +45,11 @@
                     <ul class="account-area">
                         <li>
                             <a class="login-area dropdown-toggle" data-toggle="dropdown">
-                                <div class="avatar" title="View your public profile">
-                                    <img src="http://127.0.0.1/yctsp/Application/Admin/Public/images/adam-jansen.jpg">
-                                </div>
+                                <!--<div class="avatar" title="View your public profile">-->
+                                    <!--<img src="http://127.0.0.1/yctsp/Application/Admin/Public/images/adam-jansen.jpg">-->
+                                <!--</div>-->
                                 <section>
-                                    <h2><span class="profile"><span><?php echo (session('ad_name')); ?></span></span></h2>
+                                    <h2><span class="profile"><span><?php echo (session('username')); ?></span></span></h2>
                                 </section>
                             </a>
                             <!--Login Area Dropdown-->
@@ -141,6 +141,30 @@
             <a href="/yctsp/index.php/Admin/Goods/index">
                 <i class="menu-icon fa fa-gear"></i>
                 <span class="menu-text">商品管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Order/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">订单管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Order/order_status_index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">订单状态管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Comment/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">评论管理</span>
                 <i class="menu-expand"></i>
             </a>
         </li>

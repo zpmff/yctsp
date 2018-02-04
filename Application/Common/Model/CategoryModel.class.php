@@ -47,5 +47,25 @@ class CategoryModel extends Model {
     }
 
 
+    public function categoryTreeFront(){
+        $arr = $this->select();
+        return $this->_cateDiguiFrant($arr ,$pid = 0  );
+    }
+
+    private function _cateDiguiFrant( $arr ,$pid = 0  ){
+
+        $list = array()  ;
+        foreach( $arr as $k => $v){
+            if($v['pid'] == $pid ){
+                $child = $this->_cateDiguiFrant($arr, $v['id']) ;
+                $v['child']     =  $child   ;
+                $list[] = $v;;
+            }
+        }
+        return $list;
+    }
+
+
+
 
 }

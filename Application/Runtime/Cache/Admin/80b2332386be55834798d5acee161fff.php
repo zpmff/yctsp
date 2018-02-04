@@ -45,11 +45,11 @@
                     <ul class="account-area">
                         <li>
                             <a class="login-area dropdown-toggle" data-toggle="dropdown">
-                                <div class="avatar" title="View your public profile">
-                                    <img src="http://127.0.0.1/yctsp/Application/Admin/Public/images/adam-jansen.jpg">
-                                </div>
+                                <!--<div class="avatar" title="View your public profile">-->
+                                    <!--<img src="http://127.0.0.1/yctsp/Application/Admin/Public/images/adam-jansen.jpg">-->
+                                <!--</div>-->
                                 <section>
-                                    <h2><span class="profile"><span><?php echo (session('ad_name')); ?></span></span></h2>
+                                    <h2><span class="profile"><span><?php echo (session('username')); ?></span></span></h2>
                                 </section>
                             </a>
                             <!--Login Area Dropdown-->
@@ -276,7 +276,7 @@
                                 <td align="center"><?php echo ($vo["text"]); ?></td>
                                <td align="center"><?php echo (date("Y-m-d",$vo["time"])); ?></td>
                                 <td align="center"><?php echo ($vo["star"]); ?></td>
-                               
+
                                 <td align="center">
                                     <a href="#" onClick="warning('确实要删除吗', '/yctsp/index.php/Admin/Comment/delete/id/<?php echo ($vo["id"]); ?>')" class="btn btn-danger btn-sm shiny">
                                         <i class="fa fa-trash-o"></i> 删除

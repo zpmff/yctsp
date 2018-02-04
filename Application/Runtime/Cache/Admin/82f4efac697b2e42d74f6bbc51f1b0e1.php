@@ -99,47 +99,76 @@
     <ul class="nav sidebar-menu">
         <!--Dashboard-->
         <li>
-            <a href="/yctsp/index.php/Admin/category/index" target="_blank">
-                <i class="menu-icon fa fa-film"></i>
-                <span class="menu-text">分类管理</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-        <li>
-            <a href="/yctsp/index.php/Admin/article/index">
-                <i class="menu-icon fa fa-gear"></i>
-                <span class="menu-text">文章管理</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-        <li>
-            <a href="/yctsp/index.php/Admin/link/index">
-                <i class="menu-icon fa fa-gear"></i>
-                <span class="menu-text">链接管理</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-        <li>
-            <a href="/yctsp/index.php/Admin/Conf/index">
-                <i class="menu-icon fa fa-gear"></i>
-                <span class="menu-text">配置管理</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-        <li>
-            <a href="/yctsp/index.php/Admin/Conf/conflst">
-                <i class="menu-icon fa fa-gear"></i>
-                <span class="menu-text">网站配置列表</span>
-                <i class="menu-expand"></i>
-            </a>
-        </li>
-        <li>
             <a href="/yctsp/index.php/Admin/Admin/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">管理员管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+        <li>
+            <a href="/yctsp/index.php/Admin/User/index">
                 <i class="menu-icon fa fa-gear"></i>
                 <span class="menu-text">用户管理</span>
                 <i class="menu-expand"></i>
             </a>
         </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Category/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">分类管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Slider/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">轮播图管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Config/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">配置管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Goods/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">商品管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Order/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">订单管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Order/order_status_index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">订单状态管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
+        <li>
+            <a href="/yctsp/index.php/Admin/Comment/index">
+                <i class="menu-icon fa fa-gear"></i>
+                <span class="menu-text">评论管理</span>
+                <i class="menu-expand"></i>
+            </a>
+        </li>
+
         <!--<li>-->
             <!--<a href="#" class="menu-dropdown">-->
                 <!--<i class="menu-icon fa fa-gear"></i>-->
@@ -229,7 +258,7 @@
                                     <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
 
                                         <div class="form-group">
-                                            <label for="username" class="col-sm-2 control-label no-padding-right">用户名</label>
+                                            <label for="username" class="col-sm-2 control-label no-padding-right">管理员名</label>
                                             <div class="col-sm-6">
                                                 <input class="form-control" id="username" placeholder="" name="username" required="" type="text">
                                             </div>
@@ -237,6 +266,7 @@
                                         </div>
 
                                         <div class="form-group">
+
                                             <label for="password" class="col-sm-2 control-label no-padding-right">密码</label>
                                             <div class="col-sm-6">
                                                 <input class="form-control" id="password" placeholder="" name="password"  type="password">
@@ -244,6 +274,7 @@
                                         </div>
 
                                         <div class="form-group">
+
                                             <label for="repassword" class="col-sm-2 control-label no-padding-right">确认密码</label>
                                             <div class="col-sm-6">
                                                 <input class="form-control" id="repassword" placeholder="" name="repassword"  type="password">
@@ -268,6 +299,7 @@
                                                 <label class="radio-inline">
                                                     <input type="radio" name="status" id="inlineRadio2" value="1"> 禁用
                                                 </label>
+
                                             </div>
                                         </div>
 
@@ -290,9 +322,9 @@
         <!-- /Page Content -->
     </div>
 </div>
-<script src="__UEDITOR__/ueditor.config.js"></script>
-<script src="__UEDITOR__/ueditor.all.min.js"></script>
-<script src="__UEDITOR__/lang/zh-cn/zh-cn.js"></script>
+<script src="http://127.0.0.1/yctsp/Public/ueditor//ueditor.config.js"></script>
+<script src="http://127.0.0.1/yctsp/Public/ueditor//ueditor.all.min.js"></script>
+<script src="http://127.0.0.1/yctsp/Public/ueditor//lang/zh-cn/zh-cn.js"></script>
 <script type="text/javascript">
     UE.getEditor('content',{initialFrameWidth:800,initialFrameHeight:400,});
 </script>
