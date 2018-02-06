@@ -10,12 +10,22 @@
 
     <nav>
         <a href="/yctsp/index.php">首页</a>
-        <a href="/yctsp/index.php/Home/Login/register">注册</a>
-        <a href="/yctsp/index.php/Home/Login/login">登录</a>
+
+        <?php if($_SESSION['user_id'] == '' ): ?><a href="/yctsp/index.php/Home/Login/register">注册</a>
+            <a href="/yctsp/index.php/Home/Login/login">登录</a>
+
+            <?php else: ?>
+            <span>欢迎，<?php echo (session('user_name')); ?></span>
+            <a href="/yctsp/index.php/Home/User/index">个人中心</a>
+            <a href="/yctsp/index.php/Home/Login/logout">退出</a><?php endif; ?>
+
     </nav>
     <hr>
 </div>
-
+<div>
+    <p><h3><?php echo ($title); ?></h3></p>
+    <hr>
+</div>
 
 <!--商品列表-->
 <?php if(is_array($goods)): $i = 0; $__LIST__ = $goods;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><div id="banner">

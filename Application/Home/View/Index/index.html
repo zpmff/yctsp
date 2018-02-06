@@ -10,8 +10,18 @@
 
     <nav>
         <a href="__APP__">首页</a>
-        <a href="__MODULE__/Login/register">注册</a>
-        <a href="__MODULE__/Login/login">登录</a>
+
+        <if condition="$_SESSION['user_id'] eq '' ">
+            <a href="__MODULE__/Login/register">注册</a>
+            <a href="__MODULE__/Login/login">登录</a>
+
+         <else />
+            <span>欢迎，{$Think.session.user_name}</span>
+            <a href="__MODULE__/User/index">个人中心</a>
+            <a href="__MODULE__/Car/index">购物车</a>
+            <a href="__MODULE__/Login/logout">退出</a>
+        </if>
+
     </nav>
     <hr>
 </div>

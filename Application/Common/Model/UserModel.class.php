@@ -18,22 +18,11 @@ class UserModel extends Model {
         array('pass','require','密码不能为空',0,'regex',3), //在新增和修改的时候，都必须验证name 必须存在
         array('pass','3,20','密码长度为3-12位字符',0,'length',3), //在新增和修改的时候，都必须验证name 必须存在
         array('repass','pass','两次输入的密码不一致',0,'confirm',3),
-//        array('ad_name','require','用户名不能为空',0,'regex',4),
-//        array('ad_password','require','密码不能为空',0,'regex',4), //登录的时候，都必须验证name 必须存在
+        array('name','require','用户名不能为空',0,'regex',4),
+        array('pass','require','密码不能为空',0,'regex',4), //登录的时候，都必须验证name 必须存在
 //        array('verify','check_verify','验证码不正确',0,'callback',4), //登录的时候，都必须验证name 必须存在
 
     );
-
-
-
-
-
-
-
-
-
-
-
 
 
     protected $_auto = array (
@@ -43,12 +32,12 @@ class UserModel extends Model {
 
     public function login($username ,$password){
 
-        $info = $this->where(array('ad_name'=>$username))->find();
+        $info = $this->where(array('name'=>$username))->find();
 
         if($info){
-            if($info['ad_password'] == md5($password)){
-                session('ad_id',$info['ad_id']);
-                session('ad_name',$info['ad_name']);
+            if($info['pass'] == md5($password)){
+                session('user_id',$info['id']);
+                session('user_name',$info['name']);
                 return true;
             }else{
                 return false;

@@ -26,10 +26,10 @@ class GoodsController extends BaseController {
             //1.获取goods表的数据
             $data['name']  = trim( I('name'));
             $data['info']  = trim( I('info'));
-            $data['price']  =  I('info') + 0;
+            $data['price']  =  I('price') + 0;
             $data['num']  =  I('num') + 0;
             $data['cid']  =  I('cid') + 0;
-            $data['type']  =  I('info') + 0;
+            $data['type']  =  I('type') + 0;
             $data['text']  = trim( I('text'));
             $data['config']  = trim( I('config'));
 

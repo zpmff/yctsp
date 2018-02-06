@@ -24,28 +24,15 @@
     </nav>
     <hr>
 </div>
+
+
+<!--登录-->
 <div>
-    <p><h3>{$title}</h3></p>
-    <hr>
-</div>
-
-<!--商品列表-->
-<volist name="goods" id="vo">
-
-    <div id="banner">
-        <div width="100%" height="100px">
-            <a href="__CONTROLLER__/goodesa/id/{$vo.id}"><img src="__ROOT__/{$vo.img}" alt=""></a>
-        </div>
-        <div>
-            <p>{$vo.name}</p>
-            <p>{$vo.info}</p>
-            <p>{$vo.price}</p>
-            <p>{$vo.type}</p>
-        </div>
-    </div>
-    <hr>
-</volist>
-
+    <form action="" method="post" >
+        用户名：<input type="text" name="name"> <br>
+        密码：<input type="password" name="pass">  <br>
+        <input type="submit" value="登录">
+    </form>
 </div>
 
 
